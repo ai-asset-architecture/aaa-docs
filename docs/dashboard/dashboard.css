@@ -153,6 +153,14 @@ h1 {
   gap: 18px;
 }
 
+.panel-row {
+  margin-top: 18px;
+}
+
+.panel-full {
+  width: 100%;
+}
+
 .trend-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -246,6 +254,12 @@ h1 {
 .axis-x {
   bottom: 8px;
   right: 12px;
+}
+
+.axis-tick {
+  fill: var(--muted);
+  font-size: 10px;
+  font-family: var(--mono);
 }
 
 #trend-line {

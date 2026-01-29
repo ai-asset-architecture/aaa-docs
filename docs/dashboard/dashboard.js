@@ -147,8 +147,12 @@ function renderTrendSeries(entries, metricKey, dom) {
   const emptyEl = document.getElementById(dom.empty);
   const line = document.getElementById(dom.line);
   const area = document.getElementById(dom.area);
+  const chart = document.getElementById(dom.chart);
   const latestEl = document.querySelector(`[data-metric="${dom.latest}"]`);
   const deltaEl = document.querySelector(`[data-metric="${dom.delta}"]`);
+  const width = 600;
+  const height = 180;
+  const padding = 16;
 
   if (!entries || entries.length < 2) {
     if (emptyEl) emptyEl.style.display = "flex";
@@ -156,6 +160,14 @@ function renderTrendSeries(entries, metricKey, dom) {
     if (area) area.setAttribute("d", "");
     if (latestEl) latestEl.textContent = "--";
     if (deltaEl) deltaEl.textContent = "--";
+    if (chart) {
+      const fallback = [
+        { date: "-" },
+        { date: "-" },
+        { date: "-" },
+      ];
+      renderAxisTicks(chart, fallback, 2, width, height, padding);
+    }
     return;
   }
 
@@ -164,9 +176,6 @@ function renderTrendSeries(entries, metricKey, dom) {
     y: item[metricKey],
   }));
   const maxX = points.length - 1;
-  const width = 600;
-  const height = 180;
-  const padding = 16;
 
   const toX = (x) => padding + (x / maxX) * (width - padding * 2);
   const toY = (y) => padding + (1 - y) * (height - padding * 2);
@@ -181,6 +190,10 @@ function renderTrendSeries(entries, metricKey, dom) {
   area.setAttribute("d", areaPath);
   if (emptyEl) emptyEl.style.display = "none";
 
+  if (chart) {
+    renderAxisTicks(chart, entries, maxX, width, height, padding);
+  }
+
   const latest = entries[entries.length - 1][metricKey];
   const prev = entries[entries.length - 2][metricKey];
   const delta = latest - prev;
@@ -188,6 +201,41 @@ function renderTrendSeries(entries, metricKey, dom) {
   const sign = delta > 0 ? "+" : "";
   deltaEl.textContent = `${sign}${(delta * 100).toFixed(1)}%`;
   deltaEl.style.color = delta >= 0 ? "var(--success)" : "var(--danger)";
+}
+
+function renderAxisTicks(chart, entries, maxX, width, height, padding) {
+  clearAxisTicks(chart);
+  const xTicks = [0, Math.floor(maxX / 2), maxX];
+  const yTicks = [0, 0.5, 1];
+
+  xTicks.forEach((idx) => {
+    if (idx < 0 || idx > maxX) return;
+    const entry = entries[idx] || {};
+    const label = entry.date ? String(entry.date) : String(idx + 1);
+    const x = padding + (idx / maxX) * (width - padding * 2);
+    const y = height - 2;
+    chart.appendChild(makeSvgText(x, y, label, "end"));
+  });
+
+  yTicks.forEach((val) => {
+    const x = padding;
+    const y = padding + (1 - val) * (height - padding * 2) + 3;
+    chart.appendChild(makeSvgText(x, y, formatRate(val), "start"));
+  });
+}
+
+function clearAxisTicks(chart) {
+  chart.querySelectorAll(".axis-tick").forEach((node) => node.remove());
+}
+
+function makeSvgText(x, y, text, anchor) {
+  const el = document.createElementNS("http://www.w3.org/2000/svg", "text");
+  el.setAttribute("x", String(x));
+  el.setAttribute("y", String(y));
+  el.setAttribute("text-anchor", anchor);
+  el.setAttribute("class", "axis-tick");
+  el.textContent = text;
+  return el;
 }
 
 async function loadMetrics() {
@@ -201,6 +249,7 @@ async function loadMetrics() {
       empty: "trend-empty",
       line: "trend-line",
       area: "trend-area",
+      chart: "trend-chart",
       latest: "latest-rate",
       delta: "delta-rate",
     });
@@ -208,6 +257,7 @@ async function loadMetrics() {
       empty: "drift-empty",
       line: "drift-line",
       area: "drift-area",
+      chart: "drift-chart",
       latest: "latest-drift",
       delta: "delta-drift",
     });
@@ -215,6 +265,7 @@ async function loadMetrics() {
       empty: "health-empty",
       line: "health-line",
       area: "health-area",
+      chart: "health-chart",
       latest: "latest-health",
       delta: "delta-health",
     });
@@ -229,6 +280,7 @@ async function loadMetrics() {
         empty: "trend-empty",
         line: "trend-line",
         area: "trend-area",
+        chart: "trend-chart",
         latest: "latest-rate",
         delta: "delta-rate",
       });
@@ -237,6 +289,7 @@ async function loadMetrics() {
         empty: "trend-empty",
         line: "trend-line",
         area: "trend-area",
+        chart: "trend-chart",
         latest: "latest-rate",
         delta: "delta-rate",
       });
@@ -245,6 +298,7 @@ async function loadMetrics() {
       empty: "drift-empty",
       line: "drift-line",
       area: "drift-area",
+      chart: "drift-chart",
       latest: "latest-drift",
       delta: "delta-drift",
     });
@@ -252,6 +306,7 @@ async function loadMetrics() {
       empty: "health-empty",
       line: "health-line",
       area: "health-area",
+      chart: "health-chart",
       latest: "latest-health",
       delta: "delta-health",
     });
@@ -266,6 +321,7 @@ async function loadTrend(lang) {
         empty: "trend-empty",
         line: "trend-line",
         area: "trend-area",
+        chart: "trend-chart",
         latest: "latest-rate",
         delta: "delta-rate",
       });
@@ -276,6 +332,7 @@ async function loadTrend(lang) {
       empty: "trend-empty",
       line: "trend-line",
       area: "trend-area",
+      chart: "trend-chart",
       latest: "latest-rate",
       delta: "delta-rate",
     });
@@ -284,6 +341,7 @@ async function loadTrend(lang) {
       empty: "trend-empty",
       line: "trend-line",
       area: "trend-area",
+      chart: "trend-chart",
       latest: "latest-rate",
       delta: "delta-rate",
     });
