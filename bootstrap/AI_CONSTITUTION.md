@@ -3,8 +3,8 @@
 
 ## 1. Mandatory Knowledge Loading (Pre-flight)
 在執行任何計畫或編碼前，**必須**讀取：
-- `aaa-tpl-docs/public/bootstrap/WORKSPACE_ARCHITECTURE.md` (基礎架構)
-- `aaa-tpl-docs/PROJECT_PLAYBOOK.md` (專案憲法)
+- `bootstrap/WORKSPACE_ARCHITECTURE.md` (基礎架構)
+- `../aaa-tpl-docs/PROJECT_PLAYBOOK.md` (專案憲法)
 
 ## 2. Milestone Lifecycle Workflow (vx.y)
 任何版本 (vx.y) 的開發必須遵循以下三個步驟（3-Step Lifecycle）。
@@ -13,13 +13,12 @@
 > 1.  **禁止有損壓縮 (No Lossy Compression)**：在建立 `task.md` 時，嚴禁將下方列出的任何交付項目「合併」或「簡化」。每一項要求（如「摘要文件」與「詳細報告」）都必須轉換為獨立的 Checkbox。
 > 2.  **分段批准 (Step-by-Step Approval)**：每完成一個步驟 (Step 1 / 2 / 3)，**必須暫停 (STOP)**，向指揮官回報該步驟的總結，並等待獲得明確批准後，才可進入下一個步驟。
 > 3.  **全域一致性檢查 (Full-File Consistency)**：當更新具有多重視圖（如 Summary List + Detail Table）的文件（例如 Roadmap）時，**必須**執行全文掃描，確保所有相關區塊皆同步更新。遺漏任何一處皆視為嚴重失誤。
-> 3.  **全域一致性檢查 (Full-File Consistency)**：當更新具有多重視圖（如 Summary List + Detail Table）的文件（例如 Roadmap）時，**必須**執行全文掃描，確保所有相關區塊皆同步更新。遺漏任何一處皆視為嚴重失誤。
 
 
 ### Step 1: Initialization (啟動與追蹤)
 - **要求**: 在開始開發前或開發中，必須初始化以下兩類文件：
-  - **Implementation Plans**: `aaa-tpl-docs/internal/development/plans/YYYY-MM-DD-<feature>-plan.md`
-  - **Validation Audits**: `aaa-tpl-docs/internal/development/audits/YYYY-MM-DD-<name>.md`
+  - **Implementation Plans**: `../aaa-tpl-docs/internal/development/plans/YYYY-MM-DD-<feature>-plan.md`
+  - **Validation Audits**: `../aaa-tpl-docs/internal/development/audits/YYYY-MM-DD-<name>.md`
 - **Debt Check (Stop the Line)**:
   - Before starting new features, ensure Core Component coverage > 90%.
   - If < 80%, **STOP** and repay debt first.
@@ -68,8 +67,8 @@
 
 ### Step 3: Completion Documentation (結案存檔)
 - **要求**: 當版本項目的完成度達到 100% 時，**必須**產出兩份正式文件：
-  - **摘要文件**: `aaa-tpl-docs/milestones/YYYYMMDD_vX.Y_<name>.md`
-  - **詳細報告**: `aaa-tpl-docs/internal/development/milestones/completion-reports/aaa_vX.Y_completion_report_YYYYMMDD.md`
+  - **摘要文件**: `../aaa-tpl-docs/milestones/YYYYMMDD_vX.Y_<name>.md`
+  - **詳細報告**: `../aaa-tpl-docs/internal/development/milestones/completion-reports/aaa_vX.Y_completion_report_YYYYMMDD.md`
 - **一致性要求 (Consistency Policy)**:
   - **Naming**: 檔案命名必須嚴格參考目標資料夾內既有文件的命名慣例。
   - **Format**: **必須** 使用以下 `<template id="completion-report">`：
@@ -124,4 +123,4 @@
 - **Assets**: All metadata must be indexed in `internal/index.json`.
 
 ---
-*Last updated: 2026-01-28 13:05*
+*Last updated: 2026-01-29 13:25 (Split Release)*
