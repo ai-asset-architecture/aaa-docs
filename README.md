@@ -3,6 +3,21 @@
 Welcome to the definitive source of truth for the **AI Asset Architecture (AAA)**. 
 This repository contains the core specifications, governance policies, and architectural guidelines required for human-AI and AI-to-AI (A2A) collaboration.
 
+## Purpose / Scope
+Public specifications and governance references for AAA.
+
+## Ownership / CODEOWNERS
+Ownership is defined in CODEOWNERS at the repo root.
+
+## Versioning / Release
+Public specs are versioned through Git history and milestone releases.
+
+## How to Consume / Use
+Read the bootstrap documents and the registry index for the latest specifications.
+
+## Contribution / Promotion Rules
+Changes require governance review and alignment with the AAA playbook.
+
 ## 🤖 For AI Agents (A2A / MCP)
 This documentation is optimized for AI consumption. If you are an AI Agent, please prioritize the following entry points:
 
