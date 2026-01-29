@@ -1,51 +1,26 @@
-# AAA Documentation
+# AI Asset Architecture (AAA) - Public Specifications
 
-> **For External Users** - Quick start guide for using AAA (AI Agent Architecture)
+Welcome to the definitive source of truth for the **AI Asset Architecture (AAA)**. 
+This repository contains the core specifications, governance policies, and architectural guidelines required for human-AI and AI-to-AI (A2A) collaboration.
 
-## 🤖 For AI Agents
+## 🤖 For AI Agents (A2A / MCP)
+This documentation is optimized for AI consumption. If you are an AI Agent, please prioritize the following entry points:
 
-**Recommended**: Connect via MCP server
-```bash
-npx @aaa/mcp-server
-```
+- **Core Constitution**: [AI_CONSTITUTION.md](bootstrap/AI_CONSTITUTION.md) - Mandatory behavioral rules and milestone lifecycle.
+- **Architecture Guide**: [WORKSPACE_ARCHITECTURE.md](bootstrap/WORKSPACE_ARCHITECTURE.md) - Multi-repo structure and governance inheritance.
+- **Registry Index**: [index.json](index.json) - Capability discovery and asset catalog.
 
-**Fallback**: Use CLI
-```bash
-npm install -g @aaa/cli
-aaa init my-project
-```
+### Protocol Support
+- **A2A (Markdown)**: All documents follow strict GFM headers for easy parsing.
+- **MCP (Model Context Protocol)**: Use the `read_resource` tool on the above files for structural knowledge injection.
 
-**Machine-readable manifest**: See [index.json](index.json)
+## 🏢 Overview
+AAA creates a "Digital Rule of Law" where autonomous agents can operate within safe, auditable boundaries. We transform governance from a manual overhead into a machine-readable runtime.
 
----
-
-## 👤 For Humans
-
-### 🚀 Quick Start (5 minutes)
-
-1. [Installation](bootstrap/quick-start.md#installation) *(Coming Soon)*
-2. [Initialize Your First Project](bootstrap/quick-start.md#first-project) *(Coming Soon)*
-3. [Run Governance Check](bootstrap/quick-start.md#governance) *(Coming Soon)*
-
-### 📚 Step-by-Step Guides
-
-- [New Project Setup Guide](guides/new-project-guide.md) *(Coming Soon)*
-- [Asset Contribution Guide](guides/asset-contribution-guide.md) *(Coming Soon)*
-- [MCP Server Connection Guide](bootstrap/mcp-server-guide.md) *(Coming Soon)*
-
-### 🏗️ Architecture & Roadmap
-
-- [AAA Core Concepts](architecture/aaa-core-concepts.md) *(Coming Soon)*
-- [Complete Roadmap](../milestones/AAA_roadmap.md)
+### Key Principles
+1. **Architecture-First**: Technical plan validation before any code change.
+2. **Deterministic Governance**: Strict 3-Step Lifecycle (Init -> Asset Preservation -> Completion).
+3. **Supreme Court**: Human-in-the-loop arbitration for edge cases.
 
 ---
-
-## 📖 Related Documentation
-
-- **For AAA Core Developers**: See [`internal/README.md`](../internal/README.md)
-- **Project Templates**: See [`templates/`](../templates/)
-
----
-
-**Status**: 🚧 Under Construction (Phase 1)  
-**Last Updated**: 2026-01-27
+*This repository is the public gateway. Private execution records and evidence are maintained in sovereign workspace repositories.*
