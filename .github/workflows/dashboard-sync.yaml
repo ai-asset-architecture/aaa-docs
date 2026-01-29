@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   governance-gate:
-    uses: ai-asset-architecture/aaa-actions/.github/workflows/reusable-gate.yaml@v1.5.5
+    uses: ai-asset-architecture/aaa-actions/.github/workflows/reusable-gate.yaml@v1.5.6
     with:
       working-directory: "."
 
@@ -49,12 +49,13 @@ jobs:
             --html-out docs/dashboard/index.html
       - name: Commit dashboard
         run: |
+          rm -rf aaa-tools aaa-tpl-docs
           if [ -z "$(git status --porcelain)" ]; then
             echo "No dashboard changes."
             exit 0
           fi
           git config user.name "aaa-bot"
           git config user.email "aaa-bot@users.noreply.github.com"
-          git add docs/dashboard/index.html
+          git add docs/dashboard/index.html docs/dashboard/index.md docs/dashboard/metrics.json docs/dashboard/trends.json
           git commit -m "chore: update governance dashboard"
           git push origin HEAD
