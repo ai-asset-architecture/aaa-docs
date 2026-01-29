@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   governance-gate:
-    uses: ai-asset-architecture/aaa-actions/.github/workflows/reusable-gate.yaml@v1.5.4
+    uses: ai-asset-architecture/aaa-actions/.github/workflows/reusable-gate.yaml@v1.5.5
     with:
       working-directory: "."
 
