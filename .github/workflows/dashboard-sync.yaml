@@ -1,0 +1,54 @@
+name: dashboard-sync
+on:
+  schedule:
+    - cron: "30 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout aaa-docs
+        uses: actions/checkout@v4
+      - name: Checkout aaa-tpl-docs
+        uses: actions/checkout@v4
+        with:
+          repository: ai-asset-architecture/aaa-tpl-docs
+          path: aaa-tpl-docs
+      - name: Checkout aaa-tools
+        uses: actions/checkout@v4
+        with:
+          repository: ai-asset-architecture/aaa-tools
+          path: aaa-tools
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Install AAA tools
+        run: |
+          python3 -m pip install -U pip
+          python3 -m pip install -e ./aaa-tools
+      - name: Locate latest nightly snapshot
+        run: |
+          LATEST_JSON=$(ls -1 aaa-tpl-docs/reports/audits/nightly_governance_*.json | sort | tail -n 1)
+          echo "LATEST_JSON=${LATEST_JSON}" >> "${GITHUB_ENV}"
+      - name: Render dashboard
+        run: |
+          mkdir -p docs/dashboard
+          aaa ops render-dashboard \
+            --input "${LATEST_JSON}" \
+            --html-out docs/dashboard/index.html
+      - name: Commit dashboard
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No dashboard changes."
+            exit 0
+          fi
+          git config user.name "aaa-bot"
+          git config user.email "aaa-bot@users.noreply.github.com"
+          git add docs/dashboard/index.html
+          git commit -m "chore: update governance dashboard"
+          git push origin HEAD
