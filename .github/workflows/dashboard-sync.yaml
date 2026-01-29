@@ -45,6 +45,7 @@ jobs:
           mkdir -p docs/dashboard
           aaa ops render-dashboard \
             --input "${LATEST_JSON}" \
+            --md-out docs/dashboard/index.md \
             --html-out docs/dashboard/index.html
       - name: Commit dashboard
         run: |
