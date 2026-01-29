@@ -8,6 +8,11 @@ permissions:
   contents: write
 
 jobs:
+  governance-gate:
+    uses: ai-asset-architecture/aaa-actions/.github/workflows/reusable-gate.yaml@v1
+    with:
+      working-directory: "."
+
   sync:
     runs-on: ubuntu-latest
     steps:
