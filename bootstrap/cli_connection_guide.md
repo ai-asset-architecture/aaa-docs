@@ -25,6 +25,26 @@
 - `cd <TARGET_REPO_DIR>`
 - `aaa init repo-checks --suite governance`
 
+## 6. `aaa init interactive`（互動式 Policy Wizard）
+> 互動式建立治理 Policy，**不**等同於專案初始化。
+
+### 6.1 啟動
+- `aaa init interactive`
+
+### 6.2 互動流程（提示）
+- Policy Name（預設 `my-repo-policy`）
+- Version（預設 `1.0.0`）
+- Add a rule?（可多次新增規則）
+  - Rule ID（例：`readme_exists`）
+  - Description
+  - Check Type（`file_exists` / `content_contains` / `json_match`）
+  - File Path / Pattern / Key Path / Expected Value（依 check 類型）
+  - Severity（`blocking` / `high` / `medium` / `low`）
+
+### 6.3 輸出
+- YAML 檔：`<policy_name>.yaml`（需要 `pyyaml`）
+- Python 檢查腳本：`check_<policy_name>.py`（可選擇是否編譯）
+
 **CLI 真實輸出範例（節錄）**
 ```text
 # AAA CHECK Technical Report
