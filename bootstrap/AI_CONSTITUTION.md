@@ -56,9 +56,9 @@
   - **Requirement**: Content must be concise and focus on **Architectural Decisions**. Avoid fluff. No strict word count.
 
 ### Step 2: Implementation (執行與驗證)
-- **要求**: 在取得 Implementation Plan 批准後，才可進入實作階段。
-- **內容**: 實作期間負責處理 bug 修復、不確定議題澄清、測試與最終驗證。
-- **範圍**: 所有實作變更必須可追溯至 Step 1 的 Plan，且需在對應 Audit 裡留證據。
+- **前置條件**: **只有在 Step 1 計畫獲得批准後**才能開始寫/改任何程式碼或文件。
+- **執行內容**: 所有實作、bug 修復、不確定議題澄清、測試與最終驗證都屬於 Step 2。
+- **證據要求**: 每一項實作結果都必須在對應 Audit 中留下可追溯證據。
 
 ### Step 3: Asset Preservation (資產保存)
 - **Goal**: 確保每次迭代都累積可復用的價值 (Reusable Value)。
