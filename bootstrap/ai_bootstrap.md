@@ -16,6 +16,17 @@ aaa check --format llm
 aaa audit --format llm
 ```
 
+### 繼承專案：最短命令清單（範例）
+```bash
+mkdir -p ~/AAA_WORKSPACE/projects/proj-001
+cd ~/AAA_WORKSPACE/projects/proj-001
+git clone <TARGET_REPO_URL> .
+pip install -e ~/AAA_WORKSPACE/projects/aaa-tools
+aaa init repo-checks --suite governance
+aaa check --format llm
+aaa audit --format llm
+```
+
 ### 1.1 選擇本機路徑
 - 建議建立獨立工作資料夾（例：`~/AAA_WORKSPACE/projects/`）。
 
