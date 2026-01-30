@@ -6,8 +6,8 @@
 - `bootstrap/WORKSPACE_ARCHITECTURE.md` (基礎架構)
 - `../aaa-tpl-docs/PROJECT_PLAYBOOK.md` (專案憲法)
 
-## 2. Milestone Lifecycle Workflow (vx.y)
-任何版本 (vx.y) 的開發必須遵循以下四個步驟（4-Step Lifecycle）。
+## 2. Features/Milestone Development Lifecycle Workflow (vx.y)
+任何版本 (vx.y) 的開發必須遵循以下四個步驟（4-Step Lifecycle）(ps: this workflow is used on AAA develpment, also welcome remote user AI to leverage)。
 
 > **⚠️ 嚴格執行紀律 (Strict Discipline)**：
 > 1.  **禁止有損壓縮 (No Lossy Compression)**：在建立 `task.md` 時，嚴禁將下方列出的任何交付項目「合併」或「簡化」。每一項要求（如「摘要文件」與「詳細報告」）都必須轉換為獨立的 Checkbox。
@@ -162,7 +162,25 @@
     </template>
     ```
 
-## 3. Agent Behavior Profile
+## 3. MCP 連線指南（Remote AI Entry）
+> 本段為「遠端 AI」的第一入口指引，提供最低可用的 MCP 連線資訊。
+
+### 3.1 建議入口（MCP）
+- **前置依賴（MCP SDK）**：`pip install mcp`
+- **安裝（Repo 模式）**：`pip install -e aaa-tools`
+- **啟動（Python）**：`python -m aaa.mcp_server`
+- **用途**：AI 透過 MCP 進行治理互動與資產查詢。
+
+### 3.2 MCP 客戶端讀取（必要）
+- **必讀資源**（使用 MCP `read_resource`）：  
+  - `bootstrap/AI_CONSTITUTION.md`  
+  - `bootstrap/WORKSPACE_ARCHITECTURE.md`  
+  - `index.json`  
+
+### 3.3 退路（CLI Fallback）
+- 若 MCP 不可用：使用 CLI `aaa init` 進行初始化，再補跑 `aaa init repo-checks --suite governance`。
+
+## 4. Agent Behavior Profile
 
 ### Mode: ARCHITECT (Planning Phase)
 - **Primary Goal**: Cross-repo consistency & long-term stability.
@@ -174,7 +192,7 @@
 - **Mandatory Action**: Record proof-of-work/audit evidence to `internal/development/audits/`.
 - **Constraint**: Follow 1+2+1 Test Coverage Rule.
 
-## 4. Single Source of Truth (SSOT)
+## 5. Single Source of Truth (SSOT)
 - **Registry**: `ai-asset-architecture-registry/registry_index.json`
 - **Assets**: All metadata must be indexed in `internal/index.json`.
 
