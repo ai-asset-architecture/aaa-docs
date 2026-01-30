@@ -16,44 +16,93 @@
 
 
 ### Step 1: Initialization (啟動與追蹤)
-- **要求**: 在開始開發前或開發中，必須初始化以下兩類文件：
-  - **Implementation Plans**: `../aaa-tpl-docs/internal/development/plans/YYYY-MM-DD-<feature>-plan.md`
-  - **Validation Audits**: `../aaa-tpl-docs/internal/development/audits/YYYY-MM-DD-<name>.md`
-- **Debt Check (Stop the Line)**:
-  - Before starting new features, ensure Core Component coverage > 90%.
-  - If < 80%, **STOP** and repay debt first.
-- **一致性要求 (Consistency Policy)**:
-  - **Naming**: Ensure filenames match the patterns defined above.
-  - **Format (Audit Files)**: **必須** 依 `../aaa-tpl-docs/internal/development/audits/` 目錄內**既有檔案格式**撰寫（標題、Task/Objective/Status、Executive Summary/證據段落等），不得自創簡化格式。
-  - **Format (Plan)**: **必須** 使用以下 `<template id="plan">`：
-    ```markdown
-    <template id="plan">
-    # Implementation Plan: {Milestone} {Title}
+1) **Required Output Files** (Naming + Location)
+   - **Implementation Plans**: `../aaa-tpl-docs/internal/development/plans/YYYY-MM-DD-<feature>-plan.md`
+   - **Validation Audits**: `../aaa-tpl-docs/internal/development/audits/YYYY-MM-DD-<name>.md`
+   - **Naming Rule**: Filenames must match the patterns above (strict).
 
-    ## Goal Description
-    {Brief description of what and why}
+2) **Debt Check (Stop the Line)**
+   - Before starting new features, ensure Core Component coverage > 90%.
+   - If < 80%, **STOP** and repay debt first.
 
-    ## User Review Required
-    > [!IMPORTANT]
-    > {Critical decisions, standards, or breaking changes}
+3) **一致性要求 (Consistency Policy)**
+   - **Audit Coverage (1+2+1)**: **每份 Audit 必須涵蓋** 1 個 Happy Path + 2 類 Edge Cases + 1 類 Negative Case（方向覆蓋，不代表最少數量）。
+   - **Format (Audit Files)**: **必須** 依 `../aaa-tpl-docs/internal/development/audits/` 目錄內**既有檔案格式**撰寫（標題、Task/Objective/Status、Executive Summary/證據段落等），不得自創簡化格式。
 
-    ## Proposed Changes
-    ### [{repo-name}]
-    #### [NEW/MODIFY] {path/to/file}
-    - {Description of change}
+4) **Format (Plan) Template**
+   - **必須** 使用以下 `<template id="plan">`：
+     ```markdown
+     <template id="plan">
+     # Implementation Plan: {Milestone} {Title}
 
-    ## Triple-Summary Protocol ({Milestone})
-    ### 1. Strategic Plan (戰略計畫摘要)
-    ### 2. Schema Evolution (結構演進摘要)
-    ### 3. Component Architecture (組件架構摘要)
+     ## Goal Description
+     {Brief description of what and why}
 
-    ## Verification Plan
-    ### Automated Tests
-    ### Manual Verification
-    </template>
-    ```
-- **通訊**: 計畫必須包含 **Triple-Summary Protocol**。
-  - **Requirement**: Content must be concise and focus on **Architectural Decisions**. Avoid fluff. No strict word count.
+     ## User Review Required
+     > [!IMPORTANT]
+     > {Critical decisions, standards, or breaking changes}
+
+     ## Proposed Changes
+     ### [{repo-name}]
+     #### [NEW/MODIFY] {path/to/file}
+     - {Description of change}
+
+     ## Triple-Summary Protocol ({Milestone})
+     ### 1. Strategic Plan (戰略計畫摘要)
+     ### 2. Schema Evolution (結構演進摘要)
+     ### 3. Component Architecture (組件架構摘要)
+
+     ## Verification Plan
+     ### Automated Tests
+     ### Manual Verification
+     </template>
+     ```
+   - **通訊**: 計畫必須包含 **Triple-Summary Protocol**（concise, architectural focus）。
+
+5) **Format (Audit) Template**
+   - **必須** 使用以下 `<template id="validation-audit">`：
+     ```markdown
+     <template id="validation-audit">
+     # Validation Audit: {Milestone} {Title}
+
+     ## Metadata
+     *   **Milestone**: {vX.Y}
+     *   **Release Name**: {Name}
+     *   **Status**: {PENDING|COMPLETED}
+     *   **Date**: {YYYY-MM-DD}
+     *   **Auditor**: {Name/Role}
+
+     ## 1. Executive Summary
+     {What is being validated and why}
+
+     ## 2. Audit Evidence (Baseline)
+     ### A. Governance Checks (Current State)
+     *   **Local Checks**: {PASS/PENDING}
+     *   **Debt Check**: {PASS/PENDING} (include counts if available)
+
+     ### B. New Feature Verification (Final)
+     | Feature | Success Criteria | Status |
+     | :--- | :--- | :--- |
+     | {Feature} | {Criteria} | {PASS/PENDING/FAIL} |
+
+     ## 3. Test Coverage (1+2+1 Directional)
+     **Requirement**: Cover 1 Happy Path + 2 Edge Case categories + 1 Negative category (directional coverage, not minimum count).
+     - [ ] **Happy Path (1)**: {case}
+     - [ ] **Edge Case (2)**: {category + cases}
+     - [ ] **Edge Case (2)**: {category + cases}
+     - [ ] **Negative Case (1)**: {category + cases}
+
+     ## 4. Test Case Inventory (Full List)
+     | ID | Scenario | Type (Happy/Edge/Negative) | Status | Evidence |
+     | :--- | :--- | :--- | :--- | :--- |
+     | T-001 | {description} | {type} | {PASS/PENDING/FAIL} | {path or log ref} |
+
+     ## 5. Next Steps
+     1. {step}
+     2. {step}
+     3. {step}
+     </template>
+     ```
 
 ### Step 2: Implementation (執行與驗證)
 - **前置條件**: **只有在 Step 1 計畫獲得批准後**才能開始寫/改任何程式碼或文件。
