@@ -1,16 +1,47 @@
 # AI Context Configuration
 > 本文件為 AI Agent（Codex/Antigravity）在 AAA 工作區的核心行為準則（AI Constitution）。
 
-## 1. Mandatory Knowledge Loading (Pre-flight)
+## 1. Remote AI Quickstart（本機初始化指引）
+> 站在「遠端 AI」視角的最短路徑，完成 AAA 本機初始化與治理驗證。
+
+### 1.1 選擇專案位置（Local Path）
+- 建議建立獨立工作資料夾（例：`~/AAA_WORKSPACE_REMOTE`）。
+- 在該資料夾內進行初始化與後續操作。
+
+### 1.2 讀取入口文件（Bootstrap Entry）
+- 優先讀取：`bootstrap/AI_CONSTITUTION.md`
+- 同步讀取：`bootstrap/WORKSPACE_ARCHITECTURE.md`（多 repo 規則）citeturn1stdout
+
+### 1.3 建立互動環境（CLI / MCP）
+- **CLI 入口**：見「CLI 連線指南（Remote AI Entry）」。
+- **MCP 入口**：見「MCP 連線指南（Remote AI Entry）」。
+
+### 1.4 由工具引導初始化（CLI / MCP）
+- CLI 完成初始化後，必跑 `aaa init repo-checks --suite governance`。citeturn4stdout
+- MCP 目前僅支援 `check/audit`，初始化請走 CLI。citeturn3stdout
+
+### 1.5 初始化完成檢查清單（Init DoD）
+- Repos 建立完成
+- CI checks 通過
+- Post-init 治理驗證已完成：`aaa init repo-checks --suite governance`
+- `aaa-init-report.json` 產出並歸檔citeturn4stdout
+
+### 1.6 操作 / 維護指南（Operate & Maintain）
+- 參考 `../aaa-tpl-docs/PROJECT_PLAYBOOK.md`（操作、協作、治理規範）。citeturn4stdout
+- 參考 `bootstrap/WORKSPACE_ARCHITECTURE.md`（多 repo 操作規則）。citeturn1stdout
+
+### 1.7 進階：AAA 開發流程（可選）
+- 若要參與 AAA 本體開發，請參考「Features/Milestone Development Lifecycle」章節。
+
+## 2. Mandatory Knowledge Loading (Pre-flight)
 **每個 session 只讀一次**；僅在規則變更時再讀。
 
 在執行任何計畫或編碼前，**必須**讀取：
-- `bootstrap/WORKSPACE_ARCHITECTURE.md` (基礎架構)
-- `../aaa-tpl-docs/AI_COMMAND_CENTER.md`
-- `../aaa-tpl-docs/PROJECT_PLAYBOOK.md` (專案憲法)
+- `bootstrap/WORKSPACE_ARCHITECTURE.md` (基礎架構)citeturn1stdout
+- `../aaa-tpl-docs/AI_COMMAND_CENTER.md`citeturn3stdout
+- `../aaa-tpl-docs/PROJECT_PLAYBOOK.md` (專案憲法)citeturn4stdout
 
-## 2. Features/Milestone Development Lifecycle Workflow (vx.y)
-任何版本 (vx.y) 的開發必須遵循以下四個步驟（4-Step Lifecycle）(ps: this workflow is used on AAA develpment, also welcome remote user AI to leverage)。
+## 3. MCP 連線指南（Remote AI Entry）
 
 > **⚠️ 嚴格執行紀律 (Strict Discipline)**：
 > 1.  **禁止有損壓縮 (No Lossy Compression)**：在建立 `task.md` 時，嚴禁將下方列出的任何交付項目「合併」或「簡化」。每一項要求（如「摘要文件」與「詳細報告」）都必須轉換為獨立的 Checkbox。
@@ -259,7 +290,8 @@ Command completed successfully.
 - `aaa check --format llm`
 - `aaa audit --format llm`
 
-## 5. Agent Behavior Profile
+## 5. Features/Milestone Development Lifecycle Workflow (vx.y)
+任何版本 (vx.y) 的開發必須遵循以下四個步驟（4-Step Lifecycle）(ps: this workflow is used on AAA develpment, also welcome remote user AI to leverage)。
 
 ### Mode: ARCHITECT (Planning Phase)
 - **Primary Goal**: Cross-repo consistency & long-term stability.
@@ -271,9 +303,10 @@ Command completed successfully.
 - **Mandatory Action**: Record proof-of-work/audit evidence to `internal/development/audits/`.
 - **Constraint**: Follow 1+2+1 Test Coverage Rule.
 
-## 6. Single Source of Truth (SSOT)
+## 6. Agent Behavior Profile
 - **Registry**: `ai-asset-architecture-registry/registry_index.json`
 - **Assets**: All metadata must be indexed in `internal/index.json`.
 
 ---
 *Last updated: 2026-01-29 13:25 (Split Release)*
+## 7. Single Source of Truth (SSOT)
