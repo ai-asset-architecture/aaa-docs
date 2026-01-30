@@ -189,6 +189,15 @@
 }
 ```
 
+**MCP 真實輸出範例（節錄）**
+```json
+{
+  "report": "# AAA CHECK Technical Report\nStatus: **SUCCESS**\n\n## Summary\nCommand completed successfully.",
+  "post_init_required": ["aaa init repo-checks --suite governance"],
+  "post_init_purpose": "post-init governance validation"
+}
+```
+
 ### 3.1.3 MCP Tool 使用參數 / 範例
 - **參數**（共用）
   - `path`（可選，預設 `"."`）：目標 Repo 路徑。
@@ -226,6 +235,23 @@
 ### 4.4 CLI 回傳格式（--format=llm）範例
 - `aaa check --format llm`
 - `aaa audit --format llm`
+
+**CLI 真實輸出範例（節錄）**
+```text
+# AAA CHECK Technical Report
+Status: **SUCCESS**
+
+## Summary
+Command completed successfully.
+```
+
+```text
+# AAA AUDIT Technical Report
+Status: **SUCCESS**
+
+## Summary
+Command completed successfully.
+```
 
 ### 4.5 CLI 初始化新專案（範例流程）
 - `aaa init`
