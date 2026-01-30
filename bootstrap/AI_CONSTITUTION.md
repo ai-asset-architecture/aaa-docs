@@ -24,7 +24,8 @@
   - If < 80%, **STOP** and repay debt first.
 - **一致性要求 (Consistency Policy)**:
   - **Naming**: Ensure filenames match the patterns defined above.
-  - **Format**: **必須** 使用以下 `<template id="plan">`：
+  - **Format (Audit Files)**: **必須** 依 `../aaa-tpl-docs/internal/development/audits/` 目錄內**既有檔案格式**撰寫（標題、Task/Objective/Status、Executive Summary/證據段落等），不得自創簡化格式。
+  - **Format (Plan)**: **必須** 使用以下 `<template id="plan">`：
     ```markdown
     <template id="plan">
     # Implementation Plan: {Milestone} {Title}
@@ -71,7 +72,8 @@
   - **詳細報告**: `../aaa-tpl-docs/internal/development/milestones/completion-reports/aaa_vX.Y_completion_report_YYYYMMDD.md`
 - **一致性要求 (Consistency Policy)**:
   - **Naming**: 檔案命名必須嚴格參考目標資料夾內既有文件的命名慣例。
-  - **Format**: **必須** 使用以下 `<template id="completion-report">`：
+  - **Format (Completion Reports)**: **必須** 依 `../aaa-tpl-docs/internal/development/milestones/completion-reports/` 目錄內**既有檔案格式**撰寫，確保與既有結構一致。
+  - **Format (Template)**: **必須** 使用以下 `<template id="completion-report">`：
     ```markdown
     <template id="completion-report">
     # Milestone Completion Report: {Milestone} {Title}
