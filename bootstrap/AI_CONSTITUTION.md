@@ -178,7 +178,18 @@
 - `aaa_check`：執行治理檢查，回傳語義化診斷結果。
 - `aaa_audit`：產出治理稽核報告（LLM 可讀格式）。
 
-### 3.1.2 MCP Tool 使用參數 / 範例
+### 3.1.2 MCP 回傳格式（--format=llm）
+> MCP 回傳為 JSON，核心欄位為 `report`（LLM 格式字串），並包含 init 提示欄位。
+
+```json
+{
+  "report": "<LLM-formatted report>",
+  "post_init_required": ["aaa init repo-checks --suite governance"],
+  "post_init_purpose": "post-init governance validation"
+}
+```
+
+### 3.1.3 MCP Tool 使用參數 / 範例
 - **參數**（共用）
   - `path`（可選，預設 `"."`）：目標 Repo 路徑。
 - **範例**
@@ -194,6 +205,10 @@
 ### 3.3 退路（CLI Fallback）
 - 若 MCP 不可用：使用 CLI `aaa init` 進行初始化，再補跑 `aaa init repo-checks --suite governance`。
 
+### 3.4 MCP 初始化新專案（現況限制）
+- 目前 MCP tools **不含** `init`，只能做 `check/audit`。
+- 初始化請走 CLI；完成後可用 MCP 執行 `aaa_check` / `aaa_audit`。
+
 ## 4. CLI 連線指南（Remote AI Entry）
 > 本段為「遠端 AI」的 CLI 最小可用流程，確保無 MCP 也能完成初始化與治理驗證。
 
@@ -207,6 +222,16 @@
 ### 4.3 基礎檢查（建議）
 - `aaa check`
 - `aaa audit`
+
+### 4.4 CLI 回傳格式（--format=llm）範例
+- `aaa check --format llm`
+- `aaa audit --format llm`
+
+### 4.5 CLI 初始化新專案（範例流程）
+- `aaa init`
+- `aaa init repo-checks --suite governance`
+- `aaa check --format llm`
+- `aaa audit --format llm`
 
 ## 5. Agent Behavior Profile
 
