@@ -12,6 +12,10 @@
 - `aaa init`
 - `aaa init repo-checks --suite governance`
 
+## 2.1 Init Plan Presets（v2.0）
+- `aaa init --plan ~/AAA_WORKSPACE/projects/aaa-tools/runbooks/init/plan.v2.0.json`
+- `aaa init --plan ~/AAA_WORKSPACE/projects/aaa-tools/runbooks/init/plan.v2.0.json --preset lean`
+
 ## 3. 基礎檢查（建議）
 - `aaa check`
 - `aaa audit`

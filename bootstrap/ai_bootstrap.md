@@ -53,6 +53,7 @@ aaa audit --format llm
 ### 1.4 初始化與接管
 - 初始化請走 CLI（請依本頁「最短命令清單」執行）。
 - MCP 目前只支援 `check/audit`（無 init）。
+- 若需選擇 Preset：`aaa init --plan ~/AAA_WORKSPACE/projects/aaa-tools/runbooks/init/plan.v2.0.json --preset governance_native`
 
 ### 1.5 Init DoD Checklist
 - `bootstrap/init_dod_checklist.md`
