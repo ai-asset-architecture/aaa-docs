@@ -16,6 +16,18 @@ aaa check --format llm
 aaa audit --format llm
 ```
 
+### 新專案：最短命令清單（範例）
+```bash
+mkdir -p ~/AAA_WORKSPACE/projects/proj-001
+cd ~/AAA_WORKSPACE/projects/proj-001
+git clone https://github.com/ai-asset-architecture/aaa-tools.git ~/AAA_WORKSPACE/projects/aaa-tools
+pip install -e ~/AAA_WORKSPACE/projects/aaa-tools
+aaa init
+aaa init repo-checks --suite governance
+aaa check --format llm
+aaa audit --format llm
+```
+
 ### 繼承專案：最短命令清單（範例）
 ```bash
 mkdir -p ~/AAA_WORKSPACE/projects/proj-001
