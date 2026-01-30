@@ -7,11 +7,11 @@
 - `../aaa-tpl-docs/PROJECT_PLAYBOOK.md` (專案憲法)
 
 ## 2. Milestone Lifecycle Workflow (vx.y)
-任何版本 (vx.y) 的開發必須遵循以下三個步驟（3-Step Lifecycle）。
+任何版本 (vx.y) 的開發必須遵循以下四個步驟（4-Step Lifecycle）。
 
 > **⚠️ 嚴格執行紀律 (Strict Discipline)**：
 > 1.  **禁止有損壓縮 (No Lossy Compression)**：在建立 `task.md` 時，嚴禁將下方列出的任何交付項目「合併」或「簡化」。每一項要求（如「摘要文件」與「詳細報告」）都必須轉換為獨立的 Checkbox。
-> 2.  **分段批准 (Step-by-Step Approval)**：每完成一個步驟 (Step 1 / 2 / 3)，**必須暫停 (STOP)**，向指揮官回報該步驟的總結，並等待獲得明確批准後，才可進入下一個步驟。
+> 2.  **分段批准 (Step-by-Step Approval)**：每完成一個步驟 (Step 1 / 2 / 3 / 4)，**必須暫停 (STOP)**，向指揮官回報該步驟的總結，並等待獲得明確批准後，才可進入下一個步驟。
 > 3.  **全域一致性檢查 (Full-File Consistency)**：當更新具有多重視圖（如 Summary List + Detail Table）的文件（例如 Roadmap）時，**必須**執行全文掃描，確保所有相關區塊皆同步更新。遺漏任何一處皆視為嚴重失誤。
 
 
@@ -55,7 +55,12 @@
 - **通訊**: 計畫必須包含 **Triple-Summary Protocol**。
   - **Requirement**: Content must be concise and focus on **Architectural Decisions**. Avoid fluff. No strict word count.
 
-### Step 2: Asset Preservation (資產保存)
+### Step 2: Implementation (執行與驗證)
+- **要求**: 在取得 Implementation Plan 批准後，才可進入實作階段。
+- **內容**: 實作期間負責處理 bug 修復、不確定議題澄清、測試與最終驗證。
+- **範圍**: 所有實作變更必須可追溯至 Step 1 的 Plan，且需在對應 Audit 裡留證據。
+
+### Step 3: Asset Preservation (資產保存)
 - **Goal**: 確保每次迭代都累積可復用的價值 (Reusable Value)。
 - **Mandatory Value Check (價值檢查)**:
   - 結案前 **必須** 盤點產出的 Evals, Templates, Policy Packs, Tools。
@@ -66,7 +71,7 @@
   - Do **NOT** promote trivial UI tests or flaky tests.
 - **產出**: 在結案報告 template 中填寫 `Asset Preservation` 章節。
 
-### Step 3: Completion Documentation (結案存檔)
+### Step 4: Completion Documentation (結案存檔)
 - **要求**: 當版本項目的完成度達到 100% 時，**必須**產出兩份正式文件：
   - **摘要文件**: `../aaa-tpl-docs/milestones/YYYYMMDD_vX.Y_<name>.md`
   - **詳細報告**: `../aaa-tpl-docs/internal/development/milestones/completion-reports/aaa_vX.Y_completion_report_YYYYMMDD.md`
