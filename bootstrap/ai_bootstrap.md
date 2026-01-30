@@ -51,7 +51,7 @@ aaa audit --format llm
 - CLI：`bootstrap/cli_connection_guide.md`
 
 ### 1.4 初始化與接管
-- 初始化請走 CLI：`bootstrap/remote_ai_quickstart.md`
+- 初始化請走 CLI（請依本頁「最短命令清單」執行）。
 - MCP 目前只支援 `check/audit`（無 init）。
 
 ### 1.5 Init DoD Checklist
@@ -69,7 +69,6 @@ aaa audit --format llm
 - `../aaa-tpl-docs/PROJECT_PLAYBOOK.md` (專案憲法)
 
 ## 3. Guides Index (bootstrap/)
-- `bootstrap/remote_ai_quickstart.md`
 - `bootstrap/mcp_connection_guide.md`
 - `bootstrap/cli_connection_guide.md`
 - `bootstrap/init_dod_checklist.md`
