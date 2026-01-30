@@ -2,8 +2,11 @@
 > 本文件為 AI Agent（Codex/Antigravity）在 AAA 工作區的核心行為準則（AI Constitution）。
 
 ## 1. Mandatory Knowledge Loading (Pre-flight)
+**每個 session 只讀一次**；僅在規則變更時再讀。
+
 在執行任何計畫或編碼前，**必須**讀取：
 - `bootstrap/WORKSPACE_ARCHITECTURE.md` (基礎架構)
+- `../aaa-tpl-docs/AI_COMMAND_CENTER.md`
 - `../aaa-tpl-docs/PROJECT_PLAYBOOK.md` (專案憲法)
 
 ## 2. Features/Milestone Development Lifecycle Workflow (vx.y)
