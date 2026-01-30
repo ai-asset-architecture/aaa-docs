@@ -175,6 +175,13 @@
 - `aaa_check`：執行治理檢查，回傳語義化診斷結果。
 - `aaa_audit`：產出治理稽核報告（LLM 可讀格式）。
 
+### 3.1.2 MCP Tool 使用參數 / 範例
+- **參數**（共用）
+  - `path`（可選，預設 `"."`）：目標 Repo 路徑。
+- **範例**
+  - `aaa_check(path=".")`
+  - `aaa_audit(path=".")`
+
 ### 3.2 MCP 客戶端讀取（必要）
 - **必讀資源**（使用 MCP `read_resource`）：  
   - `bootstrap/AI_CONSTITUTION.md`  
