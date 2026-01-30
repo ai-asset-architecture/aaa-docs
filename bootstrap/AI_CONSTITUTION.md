@@ -171,6 +171,10 @@
 - **啟動（Python）**：`python -m aaa.mcp_server`
 - **用途**：AI 透過 MCP 進行治理互動與資產查詢。
 
+### 3.1.1 MCP Tool 清單（現況）
+- `aaa_check`：執行治理檢查，回傳語義化診斷結果。
+- `aaa_audit`：產出治理稽核報告（LLM 可讀格式）。
+
 ### 3.2 MCP 客戶端讀取（必要）
 - **必讀資源**（使用 MCP `read_resource`）：  
   - `bootstrap/AI_CONSTITUTION.md`  
