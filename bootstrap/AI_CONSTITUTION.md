@@ -194,7 +194,21 @@
 ### 3.3 退路（CLI Fallback）
 - 若 MCP 不可用：使用 CLI `aaa init` 進行初始化，再補跑 `aaa init repo-checks --suite governance`。
 
-## 4. Agent Behavior Profile
+## 4. CLI 連線指南（Remote AI Entry）
+> 本段為「遠端 AI」的 CLI 最小可用流程，確保無 MCP 也能完成初始化與治理驗證。
+
+### 4.1 安裝（Repo 模式）
+- `pip install -e aaa-tools`
+
+### 4.2 最小指令流程（DoD）
+- `aaa init`
+- `aaa init repo-checks --suite governance`
+
+### 4.3 基礎檢查（建議）
+- `aaa check`
+- `aaa audit`
+
+## 5. Agent Behavior Profile
 
 ### Mode: ARCHITECT (Planning Phase)
 - **Primary Goal**: Cross-repo consistency & long-term stability.
@@ -206,7 +220,7 @@
 - **Mandatory Action**: Record proof-of-work/audit evidence to `internal/development/audits/`.
 - **Constraint**: Follow 1+2+1 Test Coverage Rule.
 
-## 5. Single Source of Truth (SSOT)
+## 6. Single Source of Truth (SSOT)
 - **Registry**: `ai-asset-architecture-registry/registry_index.json`
 - **Assets**: All metadata must be indexed in `internal/index.json`.
 
