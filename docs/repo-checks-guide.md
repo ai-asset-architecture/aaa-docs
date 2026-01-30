@@ -9,6 +9,13 @@
 - 使用 AAA 建立新專案後，做一次「收尾驗證」。
 - CI/Gate 或管理流程需要治理一致性的證據。
 
+## 1.5) 治理說明：.aaa 與 dashboard-sync
+**為什麼每個 repo 需要 `.aaa/metadata.json`？**  
+`repo_type_consistency` 會檢查是否存在 `.aaa/metadata.json`，用來確保 repo 類型與治理規則能被機器正確辨識與套用。若缺失，會直接列為治理違規。citeturn9stdout
+
+**為什麼 dashboard-sync 要放在 `aaa-docs`？**  
+Dashboard 是公開文件資產，應由文件 repo 持有；因此同步與發佈流程放在 `aaa-docs`，並且避免跨 repo 直接 push（防止權限/所有權問題與覆寫風險）。citeturn9stdout
+
 ## 2) 為什麼需要 plan 檔？
 `repo-checks` 需要知道 **要檢查哪些 repos** 與 **哪些治理規則**。因此必須指定 `--from-plan`。
 
