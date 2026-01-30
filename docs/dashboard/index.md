@@ -15,15 +15,15 @@
 
 | Repo / 專案 | Type / 類型 | Compliance / 合規 | Failing Checks / 未通過檢查 |
 | --- | --- | --- | --- |
-| aaa-tools | docs | PASS | - |
-| aaa-actions | docs | PASS | - |
-| aaa-evals | docs | PASS | - |
-| aaa-policies | docs | PASS | - |
-| aaa-observability | docs | PASS | - |
-| .github | docs | PASS | - |
-| ai-asset-architecture-registry | docs | PASS | - |
-| aaa-prompts | docs | PASS | - |
+| aaa-tools | tooling | PASS | - |
+| aaa-actions | actions | PASS | - |
+| aaa-evals | evals | PASS | - |
+| aaa-policies | policies | PASS | - |
+| aaa-observability | observability | PASS | - |
+| .github | governance | PASS | - |
+| ai-asset-architecture-registry | registry | PASS | - |
+| aaa-prompts | prompts | PASS | - |
 | aaa-docs | docs | PASS | - |
-| aaa-tpl-docs | docs | PASS | - |
+| aaa-tpl-docs | templates | PASS | - |
 | aaa-tpl-service | service | PASS | - |
 | aaa-tpl-frontend | frontend | PASS | - |
