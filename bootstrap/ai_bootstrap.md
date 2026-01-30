@@ -1,19 +1,23 @@
 # AI Bootstrap (Single Entry Point)
 > 遠端 AI 的單一入口文件，僅保留「必須知道」的最小內容。
 
-## 🚦 Hard-Lock (Minimal)
-> 必須遵循的四條最小規則（完整條款見 `bootstrap/agent_governance_rules.md`）。
-
-1. **Preflight**: 每個 session 只讀一次規則文件；規則變更才重讀。
-2. **Mandatory Load**: 依 Preflight 規則讀取必讀文件。
-3. **Evidence Mode**: 結論必須標註來源。
-4. **Fail-Closed**: 缺少必要規格即停止並輸出缺口清單。
-
 ## 1. Remote AI Bootstrap (Minimal)
 > 只保留「必須知道」的最小內容，其餘細節請依指引文件執行。
 
+### 最短可執行清單（5–7 行命令）
+```bash
+mkdir -p ~/AAA_WORKSPACE/projects
+cd ~/AAA_WORKSPACE/projects
+git clone https://github.com/ai-asset-architecture/aaa-tools.git
+pip install -e aaa-tools
+aaa init
+aaa init repo-checks --suite governance
+aaa check --format llm
+aaa audit --format llm
+```
+
 ### 1.1 選擇本機路徑
-- 建議建立獨立工作資料夾（例：`~/AAA_WORKSPACE_REMOTE`）。
+- 建議建立獨立工作資料夾（例：`~/AAA_WORKSPACE/projects/`）。
 
 ### 1.2 讀取入口文件
 - `bootstrap/ai_bootstrap.md`

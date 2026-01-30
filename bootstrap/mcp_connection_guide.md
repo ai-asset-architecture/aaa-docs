@@ -39,3 +39,7 @@
 
 ## 5. 初始化限制
 - MCP 目前不含 `init`；初始化請走 CLI。
+
+## 6. 建議使用順序
+1. 先用 CLI 完成初始化與 repo-checks。
+2. 再用 MCP 執行 `aaa_check` / `aaa_audit` 作為驗證與監控。

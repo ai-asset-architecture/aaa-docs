@@ -8,10 +8,3 @@
 2. **Mandatory Load**: 依 Preflight 規則讀取 `AI_COMMAND_CENTER.md` + `PROJECT_PLAYBOOK.md`（每個 session 一次；或規則變更時再讀）。
 3. **Evidence Mode**: 所有的結論與輸出 **必須** 標註原文引用（Cite Source Lines），禁止任何模糊引用。
 4. **Fail-Closed**: 若缺少必要的模板、規格或 Roadmap 內容，**禁止硬寫**。Agent 必須立即暫停並輸出「缺口清單 (Gap List)」。
-
-> [!IMPORTANT]
-> **Workflow Primacy Rule (Antigravity Mode)**:
-> While operating in this workspace, the AI (Antigravity) MUST **IGNORE** its default system-generated `implementation_plan.md` and `task.md` artifacts when preparing for features or functions.
-> 1.  You are **REQUIRED** to use the human-defined workflow in this document (Section 2: 3-Step Milestone Lifecycle).
-> 2.  All plans, tasks, and audits MUST be written to the `aaa-tpl-docs` directory as specified, NOT the default `.gemini/brain` directory.
-> 3.  Adherence to this rule is the highest-priority constraint. Any deviation triggers a Step 4 (Fail-Closed) event.
