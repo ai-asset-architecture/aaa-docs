@@ -3,7 +3,7 @@
 
 ## 1. 操作 / 維護入口
 - `../aaa-tpl-docs/PROJECT_PLAYBOOK.md`
-- `bootstrap/WORKSPACE_ARCHITECTURE.md`
+- `bootstrap/workspace_architecture.md`
 
 ## 2. Features/Milestone Development Lifecycle Workflow (vx.y)
 任何版本 (vx.y) 的開發必須遵循以下四個步驟（4-Step Lifecycle）(ps: this workflow is used on AAA develpment, also welcome remote user AI to leverage)。
@@ -159,19 +159,3 @@
     *   **Backlog**: ...
     </template>
     ```
-
-## 3. Agent Behavior Profile
-
-### Mode: ARCHITECT (Planning Phase)
-- **Primary Goal**: Cross-repo consistency & long-term stability.
-- **Mandatory Action**: Draft implementation plans to `internal/development/plans/` first.
-- **Constraint**: No implementation until plan approval.
-
-### Mode: BUILDER (Implementation Phase)
-- **Primary Goal**: Solid implementation & automated verification.
-- **Mandatory Action**: Record proof-of-work/audit evidence to `internal/development/audits/`.
-- **Constraint**: Follow 1+2+1 Test Coverage Rule.
-
-## 4. Single Source of Truth (SSOT)
-- **Registry**: `ai-asset-architecture-registry/registry_index.json`
-- **Assets**: All metadata must be indexed in `internal/index.json`.
