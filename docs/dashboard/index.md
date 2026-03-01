@@ -8,6 +8,21 @@
 - Failing Repos / 不合規: 0
 - Archived Repos / 已封存: 0
 
+## Ops Capability Entry / 版本治理入口
+
+- Workflow Registry: `/ops-registry?tab=workflows&lang=zh-TW`
+- Version Registry: `/ops-registry?tab=versions&lang=zh-TW`
+- Version Detail: `/ops-version/<version>?lang=zh-TW`
+
+Canonical Sources:
+- `aaa-tpl-docs/workflow_index.md`
+- `aaa-tpl-docs/version_index.md`
+
+Contracts:
+- `docs/contracts/ops_registry_workflows_response.v0.1.schema.json`
+- `docs/contracts/ops_registry_versions_response.v0.1.schema.json`
+- `docs/contracts/ops_version_detail_response.v0.1.schema.json`
+
 ## Failing Repos / 不合規清單
 - None / 無
 

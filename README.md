@@ -21,7 +21,7 @@ Changes require governance review and alignment with the AAA playbook.
 ## 🤖 For AI Agents (A2A / MCP)
 This documentation is optimized for AI consumption. If you are an AI Agent, please prioritize the following entry points:
 
-- **Core Constitution**: [AI_CONSTITUTION.md](bootstrap/AI_CONSTITUTION.md) - Mandatory behavioral rules and milestone lifecycle.
+- **Core Workflow Law**: [operate_maintain_guide.md](bootstrap/operate_maintain_guide.md) - Mandatory behavioral rules and milestone lifecycle (4-Step v2.0.0).
 - **Architecture Guide**: [WORKSPACE_ARCHITECTURE.md](bootstrap/WORKSPACE_ARCHITECTURE.md) - Multi-repo structure and governance inheritance.
 - **Registry Index**: [index.json](index.json) - Capability discovery and asset catalog.
 
@@ -34,7 +34,7 @@ AAA creates a "Digital Rule of Law" where autonomous agents can operate within s
 
 ### Key Principles
 1. **Architecture-First**: Technical plan validation before any code change.
-2. **Deterministic Governance**: Strict 3-Step Lifecycle (Init -> Asset Preservation -> Completion).
+2. **Deterministic Governance**: Strict 4-Step Lifecycle v2.0.0 (Contract Baseline -> Implementation & Evidence -> Asset Preservation -> Completion).
 3. **Supreme Court**: Human-in-the-loop arbitration for edge cases.
 
 ---

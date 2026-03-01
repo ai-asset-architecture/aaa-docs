@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-asset-architecture.github.io/aaa-docs/contracts/ops_workflow_index_row.v0.1.schema.json",
+  "title": "Ops Workflow Index Row v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "date",
+    "id",
+    "workflow",
+    "purpose",
+    "target",
+    "scenario",
+    "trigger",
+    "mode"
+  ],
+  "properties": {
+    "date": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+    "id": {"type": "string", "minLength": 1},
+    "workflow": {"type": "string", "minLength": 1},
+    "purpose": {"type": "string", "minLength": 1},
+    "target": {"type": "string", "minLength": 1},
+    "scenario": {"type": "string", "minLength": 1},
+    "trigger": {"type": "string", "minLength": 1},
+    "mode": {"type": "string", "minLength": 1}
+  }
+}
