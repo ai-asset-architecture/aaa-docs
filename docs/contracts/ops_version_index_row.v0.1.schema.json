@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-asset-architecture.github.io/aaa-docs/contracts/ops_version_index_row.v0.1.schema.json",
+  "title": "Ops Version Index Row v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "date",
+    "version",
+    "name",
+    "meaning",
+    "why",
+    "landing",
+    "status",
+    "availability_verification"
+  ],
+  "properties": {
+    "date": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+    "version": {"type": "string", "pattern": "^v\\d+\\.\\d+(\\.\\d+)?$"},
+    "name": {"type": "string", "minLength": 1},
+    "meaning": {"type": "string", "minLength": 1},
+    "why": {"type": "string", "minLength": 1},
+    "landing": {"type": "string", "minLength": 1},
+    "status": {
+      "type": "string",
+      "enum": ["PLANNED", "UNVERIFIED", "PLANNED_STEP2", "COMPLETED_STEP1", "BRIDGE_ONLY", "COMPLETED"]
+    },
+    "availability_verification": {"type": "string", "minLength": 1}
+  }
+}

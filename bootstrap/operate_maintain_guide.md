@@ -1,161 +1,192 @@
-# Operate & Maintain Guide
-> 遠端 AI 在本機操作、維護與參與 AAA 開發的指引。
+# Operate & Maintain Guide v2.0.0
+> AAA 版本開發與維運權威流程（AI/Agent 專用，無歧義可執行）。
 
-## 1. 操作 / 維護入口
-- `../aaa-tpl-docs/PROJECT_PLAYBOOK.md`
-- `bootstrap/workspace_architecture.md`
+## 文件中繼資料
+- document_version: `v2.0.0`
+- effective_date: `2026-03-01`
+- replaces: `aaa-docs/bootstrap/operate_maintain_guide.md`（舊版）
+- authority_level: `workflow-law`
 
-## 2. Features/Milestone Development Lifecycle Workflow (vx.y)
-任何版本 (vx.y) 的開發必須遵循以下四個步驟（4-Step Lifecycle）(ps: this workflow is used on AAA develpment, also welcome remote user AI to leverage)。
+## 0. 權威與優先序（MUST）
+1. 本文件是 AAA 版本開發工作流唯一權威來源。
+2. 任何自建 `task.md`、memo、agent checklist 不得覆寫本文件規則。
+3. 優先序固定：`operate_maintain_guide.md > task.md > 臨時備忘`。
+4. 違反本文件任一 blocking 規則，流程狀態必須標記為 `NOT READY` 或 `FAIL`。
 
-> **⚠️ 嚴格執行紀律 (Strict Discipline)**：
-> 1.  **禁止有損壓縮 (No Lossy Compression)**：在建立 `task.md` 時，嚴禁將下方列出的任何交付項目「合併」或「簡化」。每一項要求（如「摘要文件」與「詳細報告」）都必須轉換為獨立的 Checkbox。
-> 2.  **分段批准 (Step-by-Step Approval)**：每完成一個步驟 (Step 1 / 2 / 3 / 4)，**必須暫停 (STOP)**，向指揮官回報該步驟的總結，並等待獲得明確批准後，才可進入下一個步驟。
-> 3.  **全域一致性檢查 (Full-File Consistency)**：當更新具有多重視圖（如 Summary List + Detail Table）的文件（例如 Roadmap）時，**必須**執行全文掃描，確保所有相關區塊皆同步更新。遺漏任何一處皆視為嚴重失誤。
+## 1. 核心目標
+1. 讓 AAA 本體與繼承專案可共用同一套版本治理流程。
+2. 讓流程具 machine-checkable 特性，避免主觀判斷與語意漂移。
+3. 以可執行證據鏈（remote run_ref + evidence paths）取代敘述式完成宣告。
 
-### Step 1: Initialization (啟動與追蹤)
-1) **Required Output Files** (Naming + Location)
-   - **Implementation Plans**: `../aaa-tpl-docs/internal/development/plans/YYYY-MM-DD-<feature>-plan.md`
-   - **Validation Audits**: `../aaa-tpl-docs/internal/development/audits/YYYY-MM-DD-<name>.md`
-   - **Naming Rule**: Filenames must match the patterns above (strict).
+## 2. Canonical Data Sources（MUST）
+下列兩份 index 檔是版本/工作流程頁面的原始資料來源（raw data SSOT）：
+- `aaa-tpl-docs/version_index.md`
+- `aaa-tpl-docs/workflow_index.md`
 
-2) **Debt Check (Stop the Line)**
-   - Before starting new features, ensure Core Component coverage > 90%.
-   - If < 80%, **STOP** and repay debt first.
+規則：
+1. 新版本開發時，Step1 必須先更新對應 index。
+2. Step2~Step4 的完成狀態與 evidence 必須回寫對應 index 行。
+3. `ops-registry` / `ops-version` 類頁面資料不得繞過上述 index 另建平行來源。
 
-3) **一致性要求 (Consistency Policy)**
-   - **Audit Coverage (1+2+1)**: **每份 Audit 必須涵蓋** 1 個 Happy Path + 2 類 Edge Cases + 1 類 Negative Case（方向覆蓋，不代表最少數量）。
-   - **Format (Audit Files)**: **必須** 依 `../aaa-tpl-docs/internal/development/audits/` 目錄內**既有檔案格式**撰寫（標題、Task/Objective/Status、Executive Summary/證據段落等），不得自創簡化格式。
+## 3. Release Type
+- `NORMAL_RELEASE`：需完成 Step1 + Step2 + Step3 + Step4。
+- `BRIDGE_RELEASE`：只做治理補洞，可停在 Step1；Step4 狀態僅可 `COMPLETED_STEP1` 或 `BRIDGE_ONLY`。
 
-4) **Format (Plan) Template**
-   - **必須** 使用以下 `<template id="plan">`：
-     ```markdown
-     <template id="plan">
-     # Implementation Plan: {Milestone} {Title}
+## 4. Strict Discipline（全部為 MUST）
+1. Step1/Step2 邊界隔離：Step1 只允許治理資產，不得碰 runtime domain code。
+2. No-Glob Policy：deliverables/evidence 路徑不得使用 `*`、`**`。
+3. Step2 run_ref remote-only：僅允許 `gh-actions:<repo>@<workflow_file>#<run_id>`。
+4. Completion Claim Guard：若缺 remote evidence，不得使用 `COMPLETED/PASS/已落地` 語意。
+5. Full-File Consistency：修改多視圖文件（如 index + registry）必須全檔一致。
 
-     ## Goal Description
-     {Brief description of what and why}
+## 5. 4-Step Lifecycle
 
-     ## User Review Required
-     > [!IMPORTANT]
-     > {Critical decisions, standards, or breaking changes}
+### Step 1: Contract Baseline（契約基線）
+**目標**：先鎖規格、邊界與驗收，再進入實作。
 
-     ## Proposed Changes
-     ### [{repo-name}]
-     #### [NEW/MODIFY] {path/to/file}
-     - {Description of change}
+允許範圍（Step1）：
+- `docs/plans/**`
+- `docs/audits/**`
+- `docs/reviews/**`
+- `docs/contracts/**`
+- `scripts/gates/**`
+- `.github/workflows/**`（僅草案）
 
-     ## Triple-Summary Protocol ({Milestone})
-     ### 1. Strategic Plan (戰略計畫摘要)
-     ### 2. Schema Evolution (結構演進摘要)
-     ### 3. Component Architecture (組件架構摘要)
+禁止範圍（Step1）：
+- `src/**`
+- `PRD/**`
+- runtime/build config（如 `package.json`, `tsconfig*`, `next.config*`）
 
-     ## Verification Plan
-     ### Automated Tests
-     ### Manual Verification
-     </template>
-     ```
-   - **通訊**: 計畫必須包含 **Triple-Summary Protocol**（concise, architectural focus）。
+必備交付：
+1. Plan：`docs/plans/YYYY-MM-DD-<version>-<name>-plan.md`
+2. Audit：`docs/audits/YYYY-MM-DD-<version>-<name>-audit.md`
+3. Diff Paths：`docs/reviews/YYYY-MM-DD-<version>-<name>-diff-paths.md`
+4. Schema：至少 1 份 `*.schema.json`
+5. Examples：至少 1 份 pass + 1 份 fail
 
-5) **Format (Audit) Template**
-   - **必須** 使用以下 `<template id="validation-audit">`：
-     ```markdown
-     <template id="validation-audit">
-     # Validation Audit: {Milestone} {Title}
+Index 更新（Step1 Blocking）：
+1. 必須追加/更新 `aaa-tpl-docs/version_index.md` 對應版本列。
+2. 若涉及 workflow，必須追加/更新 `aaa-tpl-docs/workflow_index.md` 對應列。
+3. 排序必須維持：日期 DESC；同日期下版本或 ID DESC。
+4. Step1 允許 placeholder `run_ref=N/A (step2-pending)`，但不得宣稱 Step2 PASS。
 
-     ## Metadata
-     *   **Milestone**: {vX.Y}
-     *   **Release Name**: {Name}
-     *   **Status**: {PENDING|COMPLETED}
-     *   **Date**: {YYYY-MM-DD}
-     *   **Auditor**: {Name/Role}
+#### Step 1 Exit Checklist（Machine-Scannable）
+```yaml
+ExitChecklistStep: 1
+ExitChecklistVersion: v2.0.0
+ExitChecklistOwner: <ai-or-human-role>
+ExitChecklistVerdict: PASS|FAIL|N/A
+```
+- [ ] Plan 已建立（No-Glob 路徑）
+- [ ] Audit 已建立（含 1+2+1 coverage）
+- [ ] Diff-Paths 已建立（含 allowlist/denylist/verdict）
+- [ ] Schema + Pass/Fail examples 已建立
+- [ ] Step1 邊界合規（無 `src/**` / `PRD/**`）
+- [ ] `version_index.md` 已新增或更新對應版本列
+- [ ] `workflow_index.md` 已新增或更新對應 workflow 列（若涉及）
+- [ ] index 排序正確（日期/版本規則）
+- [ ] Triple-Summary 已填寫
 
-     ## 1. Executive Summary
-     {What is being validated and why}
+### Step 2: Implementation & Executable Evidence（實作與可執行證據）
+**目標**：依 Step1 契約完成實作，並提供可重放證據。
 
-     ## 2. Audit Evidence (Baseline)
-     ### A. Governance Checks (Current State)
-     *   **Local Checks**: {PASS/PENDING}
-     *   **Debt Check**: {PASS/PENDING} (include counts if available)
+硬規則：
+1. run_ref 必須 remote-only：`gh-actions:<repo>@<workflow_file>#<run_id>`。
+2. 禁止 `local:*`, `file:*`, `shell:*`, `gh://` 作為 Step2 新證據。
+3. 任何 completion claim 必須附 remote run_ref + evidence_path。
+4. 若新增/重大修改 workflow，至少 1 次 remote smoke run。
 
-     ### B. New Feature Verification (Final)
-     | Feature | Success Criteria | Status |
-     | :--- | :--- | :--- |
-     | {Feature} | {Criteria} | {PASS/PENDING/FAIL} |
+必備證據欄位：
+- `run_ref`
+- `computed_at_taipei`
+- `inputs_digest`
+- `source_paths`（No-Glob）
+- `evidence_path`（No-Glob）
 
-     ## 3. Test Coverage (1+2+1 Directional)
-     **Requirement**: Cover 1 Happy Path + 2 Edge Case categories + 1 Negative category (directional coverage, not minimum count).
-     - [ ] **Happy Path (1)**: {case}
-     - [ ] **Edge Case (2)**: {category + cases}
-     - [ ] **Edge Case (2)**: {category + cases}
-     - [ ] **Negative Case (1)**: {category + cases}
+#### Step 2 Exit Checklist（Machine-Scannable）
+```yaml
+ExitChecklistStep: 2
+ExitChecklistVersion: v2.0.0
+ExitChecklistOwner: <ai-or-human-role>
+ExitChecklistVerdict: PASS|FAIL|N/A
+```
+- [ ] Step1 全項 PASS
+- [ ] 實作變更符合 Step1 契約範圍
+- [ ] run-evidence 文件已建立並含必要欄位
+- [ ] run_ref 為 remote-only 合規格式
+- [ ] workflow smoke run 已完成（若適用）
+- [ ] `version_index.md` 對應列已更新 Step2 狀態與 run_ref/evidence
+- [ ] `workflow_index.md` 對應列已更新 latest_run/evidence（若適用）
 
-     ## 4. Test Case Inventory (Full List)
-     | ID | Scenario | Type (Happy/Edge/Negative) | Status | Evidence |
-     | :--- | :--- | :--- | :--- | :--- |
-     | T-001 | {description} | {type} | {PASS/PENDING/FAIL} | {path or log ref} |
+### Step 3: Asset Preservation（資產保存）
+**目標**：保存可重用價值，形成可回放證據鏈。
 
-     ## 5. Next Steps
-     1. {step}
-     2. {step}
-     3. {step}
-     </template>
-     ```
+必做：
+1. 盤點 Evals/Templates/Policy Packs/Tools。
+2. 保存證據檔（若有產出）：`result.json`, `index.json`, `run-evidence.md`。
+3. 補齊 digest（如 `inputs_digest`, `policy_digest`, `dataset_digest`）。
 
-### Step 2: Implementation (執行與驗證)
-- **前置條件**: **只有在 Step 1 計畫獲得批准後**才能開始寫/改任何程式碼或文件。
-- **執行內容**: 所有實作、bug 修復、不確定議題澄清、測試與最終驗證都屬於 Step 2。
-- **證據要求**: 每一項實作結果都必須在對應 Audit 中留下可追溯證據。
+#### Step 3 Exit Checklist（Machine-Scannable）
+```yaml
+ExitChecklistStep: 3
+ExitChecklistVersion: v2.0.0
+ExitChecklistOwner: <ai-or-human-role>
+ExitChecklistVerdict: PASS|FAIL|N/A
+```
+- [ ] Value Check 完成（非空或具 Justification）
+- [ ] 證據檔已保存（若有產出）
+- [ ] digest 欄位已填寫
+- [ ] 里程碑摘要文件已建立
 
-### Step 3: Asset Preservation (資產保存)
-- **Goal**: 確保每次迭代都累積可復用的價值 (Reusable Value)。
-- **Mandatory Value Check (價值檢查)**:
-  - 結案前 **必須** 盤點產出的 Evals, Templates, Policy Packs, Tools。
-  - **Zero-Asset Trap**: 如果清單為空，**禁止結案**，除非提供明確的 Reasoning (Justification)。
-- **Action**: **必須**將其註冊至對應的資產目錄 (Catalog) 或 `ai-asset-architecture-registry/registry_index.json`。
-- **Nightly Promotion Criteria**:
-  - Promote tests that cover **Critical User Flows** or **Core Logic** (>20% impact).
-  - Do **NOT** promote trivial UI tests or flaky tests.
-- **產出**: 在結案報告 template 中填寫 `Asset Preservation` 章節。
+### Step 4: Completion & Delivery（結案與交付）
+**目標**：鎖定版本、同步索引、完成可審計閉環。
 
-### Step 4: Completion Documentation (結案存檔)
-- **要求**: 當版本項目的完成度達到 100% 時，**必須**產出兩份正式文件：
-  - **摘要文件**: `../aaa-tpl-docs/milestones/YYYYMMDD_vX.Y_<name>.md`
-  - **詳細報告**: `../aaa-tpl-docs/internal/development/milestones/completion-reports/aaa_vX.Y_completion_report_YYYYMMDD.md`
-- **一致性要求 (Consistency Policy)**:
-  - **Naming**: 檔案命名必須嚴格參考目標資料夾內既有文件的命名慣例。
-  - **Format (Completion Reports)**: **必須** 依 `../aaa-tpl-docs/internal/development/milestones/completion-reports/` 目錄內**既有檔案格式**撰寫，確保與既有結構一致。
-  - **Format (Template)**: **必須** 使用以下 `<template id="completion-report">`：
-    ```markdown
-    <template id="completion-report">
-    # Milestone Completion Report: {Milestone} {Title}
+必備文件：
+1. `docs/milestones/YYYYMMDD_vX.Y_<name>.md`
+2. `docs/milestones/completion-reports/vX.Y_completion_report_YYYYMMDD.md`
 
-    ## Metadata
-    *   **Milestone**: {vX.Y}
-    *   **Release Name**: {Name}
-    *   **Status**: COMPLETED
-    *   **Date**: {YYYY-MM-DD}
-    *   **Hash**: {Commit Hash}
+必做同步：
+1. `version_index.md`：狀態更新為最終狀態（NORMAL: `COMPLETED` / BRIDGE: `COMPLETED_STEP1`）
+2. `workflow_index.md`：對應 workflow 狀態/模式/latest_run 同步
+3. 若宣稱 completed，必須可對應 Step2 remote evidence
 
-    ## 1. Executive Summary
-    {High-level achievement summary}
+Global MCP Validation（Step4 MUST）：
+1. header 治理狀態
+2. versions page（`/ops-registry?tab=versions`）
+3. workflows page（`/ops-registry?tab=workflows`）
+4. ops dashboard（`/ops-dashboard`）
+5. version detail（`/ops-version/<version>`）
 
-    ## 2. Deliverables Status
-    ### A. {Component Area}
-    | Component | Function | Status | Coverage |
-    | :--- | :--- | :--- |
-    | `{path}` | {desc} | ✅ Done | {N}% |
+#### Step 4 Exit Checklist（Machine-Scannable）
+```yaml
+ExitChecklistStep: 4
+ExitChecklistVersion: v2.0.0
+ExitChecklistOwner: <ai-or-human-role>
+ExitChecklistVerdict: PASS|FAIL|N/A
+```
+- [ ] completion report 已建立
+- [ ] milestone 摘要已建立
+- [ ] index 同步完成（version/workflow）
+- [ ] Step4 MCP 5頁驗證證據存在
+- [ ] completion claim 與 remote evidence 一致
 
-    ## 3. Verification Evidence
-    *   **Snapshot Tests**: ...
-    *   **Unit Tests**: ...
-    *   **Manual Verification**: ...
+## 6. Import Model（給繼承專案）
+能力名稱：`operate_maintain_workflow_v2`
 
-    ## 4. Asset Preservation (Nightly Candidates)
-    1.  `{test_path}` ({reason})
+規則：
+1. 繼承專案可選擇是否匯入。
+2. 未匯入時，不必提供 ops-registry/ops-version 能力。
+3. 匯入後，必須遵守本文件 Step1~4 所有 MUST 規則。
 
-    ## 5. Next Steps
-    *   **{Next Version}**: ...
-    *   **Backlog**: ...
-    </template>
-    ```
+## 7. 狀態列舉（Canonical Enums）
+- `PLANNED`
+- `UNVERIFIED`
+- `COMPLETED_STEP1`
+- `BRIDGE_ONLY`
+- `COMPLETED`
+
+## 8. 違規處置
+1. 缺 Step1 index 追加：`Step1 FAIL`。
+2. Step2 使用 non-remote run_ref：`Hard FAIL`。
+3. completion claim 無 evidence：`Hard FAIL`。
+4. index/頁面資料不一致：`Process Non-Compliance`，必須先修復再繼續。

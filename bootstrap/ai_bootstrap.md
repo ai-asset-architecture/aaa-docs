@@ -59,7 +59,7 @@ aaa audit --format llm
 - `bootstrap/init_dod_checklist.md`
 
 ### 1.6 操作 / 維護指南
-- `bootstrap/operate_maintain_guide.md`
+- `bootstrap/operate_maintain_guide.md` (Workflow Law v2.0.0)
 
 ## 2. Mandatory Knowledge Loading (Pre-flight)
 **每個 session 只讀一次**；僅在規則變更時再讀。
@@ -73,7 +73,7 @@ aaa audit --format llm
 - `bootstrap/mcp_connection_guide.md`
 - `bootstrap/cli_connection_guide.md`
 - `bootstrap/init_dod_checklist.md`
-- `bootstrap/operate_maintain_guide.md`
+- `bootstrap/operate_maintain_guide.md` (Workflow Law v2.0.0)
 - `bootstrap/agent_governance_rules.md`
 
 ---

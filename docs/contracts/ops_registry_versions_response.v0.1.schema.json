@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-asset-architecture.github.io/aaa-docs/contracts/ops_registry_versions_response.v0.1.schema.json",
+  "title": "Ops Registry Versions Response v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["source", "updated_at_taipei", "count", "items"],
+  "properties": {
+    "source": {"type": "string"},
+    "updated_at_taipei": {"type": "string"},
+    "count": {"type": "integer", "minimum": 0},
+    "items": {
+      "type": "array",
+      "items": {"$ref": "ops_version_index_row.v0.1.schema.json"}
+    }
+  }
+}
