@@ -4,7 +4,7 @@
   "title": "Ops Version Detail Response v0.1",
   "type": "object",
   "additionalProperties": false,
-  "required": ["source", "updated_at_taipei", "version", "item"],
+  "required": ["source", "updated_at_taipei", "version", "item", "availability", "steps"],
   "properties": {
     "source": {"type": "string"},
     "updated_at_taipei": {"type": "string"},
@@ -14,6 +14,40 @@
         {"$ref": "ops_version_index_row.v0.1.schema.json"},
         {"type": "null"}
       ]
+    },
+    "availability": {
+      "type": "object",
+      "additionalProperties": {"type": "string"}
+    },
+    "steps": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["step1", "step2", "step3", "step4"],
+      "properties": {
+        "step1": {"$ref": "#/$defs/stepView"},
+        "step2": {"$ref": "#/$defs/stepView"},
+        "step3": {"$ref": "#/$defs/stepView"},
+        "step4": {"$ref": "#/$defs/stepView"}
+      }
+    }
+  },
+  "$defs": {
+    "stepView": {
+      "type": "object",
+      "required": ["label", "present", "artifacts", "artifact_count"],
+      "properties": {
+        "label": {"type": "string"},
+        "present": {"type": "boolean"},
+        "artifacts": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "artifact_count": {"type": "integer", "minimum": 0},
+        "run_ref": {"type": "string"},
+        "criteria_ref": {"type": "string"},
+        "note": {"type": "string"}
+      },
+      "additionalProperties": true
     }
   }
 }

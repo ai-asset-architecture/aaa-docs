@@ -4,7 +4,7 @@
 - `/ops-registry?tab=workflows&lang=zh-TW`
 
 ## Canonical Source
-- `aaa-tpl-docs/workflow_index.md`
+- `aaa-tpl-docs/ops/index/workflow_index.md`
 
 ## Response Contract
 - `docs/contracts/ops_registry_workflows_response.v0.1.schema.json`

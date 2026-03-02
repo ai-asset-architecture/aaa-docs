@@ -4,7 +4,7 @@
 - `/ops-registry?tab=versions&lang=zh-TW`
 
 ## Canonical Source
-- `aaa-tpl-docs/version_index.md`
+- `aaa-tpl-docs/ops/index/version_index.md`
 
 ## Response Contract
 - `docs/contracts/ops_registry_versions_response.v0.1.schema.json`

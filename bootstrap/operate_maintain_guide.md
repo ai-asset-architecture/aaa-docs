@@ -20,8 +20,8 @@
 
 ## 2. Canonical Data Sources（MUST）
 下列兩份 index 檔是版本/工作流程頁面的原始資料來源（raw data SSOT）：
-- `aaa-tpl-docs/version_index.md`
-- `aaa-tpl-docs/workflow_index.md`
+- `aaa-tpl-docs/ops/index/version_index.md`
+- `aaa-tpl-docs/ops/index/workflow_index.md`
 
 規則：
 1. 新版本開發時，Step1 必須先更新對應 index。
@@ -46,10 +46,10 @@
 **目標**：先鎖規格、邊界與驗收，再進入實作。
 
 允許範圍（Step1）：
-- `docs/plans/**`
-- `docs/audits/**`
-- `docs/reviews/**`
-- `docs/contracts/**`
+- `internal/development/plans/**`
+- `internal/development/audits/**`
+- `internal/development/reviews/**`
+- `internal/development/contracts/**`
 - `scripts/gates/**`
 - `.github/workflows/**`（僅草案）
 
@@ -59,15 +59,15 @@
 - runtime/build config（如 `package.json`, `tsconfig*`, `next.config*`）
 
 必備交付：
-1. Plan：`docs/plans/YYYY-MM-DD-<version>-<name>-plan.md`
-2. Audit：`docs/audits/YYYY-MM-DD-<version>-<name>-audit.md`
-3. Diff Paths：`docs/reviews/YYYY-MM-DD-<version>-<name>-diff-paths.md`
+1. Plan：`internal/development/plans/YYYY-MM-DD-<version>-<name>-plan.md`
+2. Audit：`internal/development/audits/YYYY-MM-DD-<version>-<name>-audit.md`
+3. Diff Paths：`internal/development/reviews/YYYY-MM-DD-<version>-<name>-diff-paths.md`
 4. Schema：至少 1 份 `*.schema.json`
 5. Examples：至少 1 份 pass + 1 份 fail
 
 Index 更新（Step1 Blocking）：
-1. 必須追加/更新 `aaa-tpl-docs/version_index.md` 對應版本列。
-2. 若涉及 workflow，必須追加/更新 `aaa-tpl-docs/workflow_index.md` 對應列。
+1. 必須追加/更新 `aaa-tpl-docs/ops/index/version_index.md` 對應版本列。
+2. 若涉及 workflow，必須追加/更新 `aaa-tpl-docs/ops/index/workflow_index.md` 對應列。
 3. 排序必須維持：日期 DESC；同日期下版本或 ID DESC。
 4. Step1 允許 placeholder `run_ref=N/A (step2-pending)`，但不得宣稱 Step2 PASS。
 
@@ -120,12 +120,40 @@ ExitChecklistVerdict: PASS|FAIL|N/A
 - [ ] `workflow_index.md` 對應列已更新 latest_run/evidence（若適用）
 
 ### Step 3: Asset Preservation（資產保存）
-**目標**：保存可重用價值，形成可回放證據鏈。
+**目標**：把 Step1/Step2 產生的可重用成果轉成 AAA 資產，形成可回放、可匯入、可審計的資產鏈。
 
-必做：
-1. 盤點 Evals/Templates/Policy Packs/Tools。
-2. 保存證據檔（若有產出）：`result.json`, `index.json`, `run-evidence.md`。
-3. 補齊 digest（如 `inputs_digest`, `policy_digest`, `dataset_digest`）。
+AAA Valuable Assets（MUST）：
+1. Templates：
+   - 例：`internal/development/templates/**`、可被繼承專案直接套用的 SOP/規格模板。
+2. Prompts：
+   - 例：`prompts/**`、agent/system prompt bundles、審核提示詞。
+3. Contracts：
+   - 例：`internal/development/contracts/**/*.schema.json`、reason-codes、pass/fail fixtures。
+4. Workflows/Gates：
+   - 例：`.github/workflows/*.yml`、`scripts/gates/**`。
+5. Evals/Test Assets：
+   - 例：`evals/**`、測試資料、驗證案例與 replay inputs。
+6. Runbooks/Operational Guides：
+   - 例：`internal/development/runbooks/**`、`internal/development/reviews/*-checklist.md`。
+7. UI/Observability Assets（若有）：
+   - 例：dashboard spec、MCP screenshots、ops/version page mapping docs。
+
+來源規則（MUST）：
+1. Step1 產物：以「治理可重用」為主（templates/contracts/gates/workflow specs）。
+2. Step2 產物：以「可執行證據可重用」為主（run evidence/evals/replay assets）。
+3. Step3 必須明確標示每項資產來自 Step1 或 Step2，不得混寫為不明來源。
+
+最小保存交付（MUST）：
+1. `internal/development/evidence/<version>/<asset>/result.json`
+2. `internal/development/evidence/<version>/<asset>/index.json`
+3. `internal/development/evidence/<version>/<asset>/run-evidence.md`
+4. `internal/development/evidence/<version>/<asset>/asset-manifest.v0.1.json`
+   - 至少欄位：`asset_id`, `asset_type`, `source_step`, `source_paths`, `reuse_target`, `owner`, `digest`
+
+Value Gate（MUST）：
+1. 若本版本沒有任何可沉澱 AAA 資產，必須在 Step3 checklist 填寫 `No-Asset Justification`（不可留空）。
+2. 若有資產，`asset-manifest.v0.1.json` 至少 1 筆 `reuse_target` 必須是 `AAA core` 或 `AAA inherited projects`。
+3. 每筆資產都要有對應 digest（如 `inputs_digest`, `policy_digest`, `dataset_digest`, `asset_digest`）。
 
 #### Step 3 Exit Checklist（Machine-Scannable）
 ```yaml
@@ -134,17 +162,19 @@ ExitChecklistVersion: v2.0.1
 ExitChecklistOwner: <ai-or-human-role>
 ExitChecklistVerdict: PASS|FAIL|N/A
 ```
-- [ ] Value Check 完成（非空或具 Justification）
-- [ ] 證據檔已保存（若有產出）
-- [ ] digest 欄位已填寫
+- [ ] Valuable Assets 已分類（Templates/Prompts/Contracts/Workflows/Evals/Runbooks/UI）
+- [ ] 每項資產已標註 `source_step`（Step1 或 Step2）
+- [ ] `asset-manifest.v0.1.json` 已建立（或有 No-Asset Justification）
+- [ ] 證據檔已保存（`result.json`, `index.json`, `run-evidence.md`）
+- [ ] digest 欄位已填寫（含 asset_digest 類欄位）
 - [ ] 里程碑摘要文件已建立
 
 ### Step 4: Completion & Delivery（結案與交付）
 **目標**：鎖定版本、同步索引、完成可審計閉環。
 
 必備文件：
-1. `docs/milestones/YYYYMMDD_vX.Y_<name>.md`
-2. `docs/milestones/completion-reports/vX.Y_completion_report_YYYYMMDD.md`
+1. `internal/development/milestones/YYYYMMDD_vX.Y_<name>.md`
+2. `internal/development/milestones/completion-reports/vX.Y_completion_report_YYYYMMDD.md`
 
 必做同步：
 1. `version_index.md`：狀態更新為最終狀態（NORMAL: `COMPLETED` / BRIDGE: `COMPLETED_STEP1`）

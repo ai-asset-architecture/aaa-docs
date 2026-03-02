@@ -8,5 +8,5 @@ This directory is populated by the nightly governance workflow. The dashboard is
 - `ops_version_detail.md` (route: `/ops-version/<version>`)
 
 ## Canonical Data Sources
-- `aaa-tpl-docs/version_index.md`
-- `aaa-tpl-docs/workflow_index.md`
+- `aaa-tpl-docs/ops/index/version_index.md`
+- `aaa-tpl-docs/ops/index/workflow_index.md`
