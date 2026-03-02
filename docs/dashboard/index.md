@@ -1,30 +1,16 @@
-# Governance Compliance Dashboard / 治理合規儀表板 (20260301_1038)
+# Governance Compliance Dashboard / 治理合規儀表板 (20260302_1027)
 
-- Compliance Rate / 合規率: 100%
+- Compliance Rate / 合規率: 83%
 - Drift Rate / 漂移率: 0%
-- Repo Health / Repo 健康度: 100%
+- Repo Health / Repo 健康度: 97%
 - Total Repos / 總 Repo 數: 12
 - Active Repos / 參與計算: 12
-- Failing Repos / 不合規: 0
+- Failing Repos / 不合規: 2
 - Archived Repos / 已封存: 0
 
-## Ops Capability Entry / 版本治理入口
-
-- Workflow Registry: `/ops-registry?tab=workflows&lang=zh-TW`
-- Version Registry: `/ops-registry?tab=versions&lang=zh-TW`
-- Version Detail: `/ops-version/<version>?lang=zh-TW`
-
-Canonical Sources:
-- `aaa-tpl-docs/ops/index/workflow_index.md`
-- `aaa-tpl-docs/ops/index/version_index.md`
-
-Contracts:
-- `docs/contracts/ops_registry_workflows_response.v0.1.schema.json`
-- `docs/contracts/ops_registry_versions_response.v0.1.schema.json`
-- `docs/contracts/ops_version_detail_response.v0.1.schema.json`
-
 ## Failing Repos / 不合規清單
-- None / 無
+- aaa-tpl-docs (templates) - workflow
+- aaa-tpl-frontend (frontend) - readme
 
 ## Inventory / 全量清單
 
@@ -39,6 +25,6 @@ Contracts:
 | ai-asset-architecture-registry | registry | PASS | - |
 | aaa-prompts | prompts | PASS | - |
 | aaa-docs | docs | PASS | - |
-| aaa-tpl-docs | templates | PASS | - |
+| aaa-tpl-docs | templates | FAIL | workflow |
 | aaa-tpl-service | service | PASS | - |
-| aaa-tpl-frontend | frontend | PASS | - |
+| aaa-tpl-frontend | frontend | FAIL | readme |

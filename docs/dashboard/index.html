@@ -16,7 +16,7 @@
       <div>
         <div class="eyebrow" data-i18n="dashboard.subtitle">Governance Compliance</div>
         <h1 data-i18n="dashboard.title">Governance Compliance Dashboard</h1>
-        <div class="meta"><span data-i18n="dashboard.date">Date</span>: 20260301_1038</div>
+        <div class="meta"><span data-i18n="dashboard.date">Date</span>: 20260302_1027</div>
       </div>
       <div class="controls">
         <button class="toggle" id="theme-toggle" data-action="theme">Dark</button>
@@ -24,27 +24,10 @@
       </div>
     </header>
 
-    <section class="panel-row">
-      <div class="panel panel-full">
-        <div class="panel-title" data-i18n="panel.ops_entry">Ops Capability Entry</div>
-        <div class="panel-sub" data-i18n="panel.ops_entry_hint">Version development governance pages (workflow/version/detail).</div>
-        <ul>
-          <li><a href="/ops-registry?tab=workflows&lang=zh-TW" data-i18n="ops.workflow_link">Workflow Registry</a></li>
-          <li><a href="/ops-registry?tab=versions&lang=zh-TW" data-i18n="ops.version_link">Version Registry</a></li>
-          <li><a href="/ops-version/v1.3.69?lang=zh-TW" data-i18n="ops.detail_link">Version Detail (sample)</a></li>
-        </ul>
-        <div class="data-source-note">
-          <span data-i18n="ops.sources">Canonical Sources</span>:
-          <code>aaa-tpl-docs/ops/index/version_index.md</code>,
-          <code>aaa-tpl-docs/ops/index/workflow_index.md</code>
-        </div>
-      </div>
-    </section>
-
     <section class="kpi-grid">
       <div class="kpi-card kpi-primary">
         <div class="kpi-label" data-i18n="kpi.compliance">Compliance Rate</div>
-        <div class="kpi-value">100%</div>
+        <div class="kpi-value">83%</div>
         <div class="kpi-sub" data-i18n="kpi.compliance_hint">All checks pass across active repos.</div>
       </div>
       <div class="kpi-card kpi-primary">
@@ -59,7 +42,7 @@
       </div>
       <div class="kpi-card kpi-success">
         <div class="kpi-label" data-i18n="kpi.repo_health">Repo Health</div>
-        <div class="kpi-value">100%</div>
+        <div class="kpi-value">97%</div>
         <div class="kpi-sub" data-i18n="kpi.health_hint">Average check pass ratio.</div>
       </div>
       <div class="kpi-card">
@@ -69,7 +52,7 @@
       </div>
       <div class="kpi-card kpi-alert">
         <div class="kpi-label" data-i18n="kpi.failing_repos">Failing Repos</div>
-        <div class="kpi-value">0</div>
+        <div class="kpi-value">2</div>
         <div class="kpi-sub" data-i18n="kpi.failing_hint">Requires action.</div>
       </div>
       <div class="kpi-card">
@@ -239,7 +222,8 @@
         <div class="panel-title" data-i18n="panel.failing">Failing Repos</div>
         <div class="panel-sub" data-i18n="panel.failing_hint">Highest priority remediation list.</div>
         <ul class="failing-list">
-          <li class="empty" data-i18n="panel.failing_empty">All repos compliant</li>
+          <li><div class="fail-name">aaa-tpl-docs</div><div class="fail-meta">templates</div><div class="fail-checks">workflow</div></li>
+<li><div class="fail-name">aaa-tpl-frontend</div><div class="fail-meta">frontend</div><div class="fail-checks">readme</div></li>
         </ul>
       </div>
     </section>
@@ -268,9 +252,9 @@
 <tr><td class="repo-name">ai-asset-architecture-registry</td><td class="repo-type">registry</td><td><span class="status status-pass" data-status="pass">PASS</span></td><td class="failing">-</td></tr>
 <tr><td class="repo-name">aaa-prompts</td><td class="repo-type">prompts</td><td><span class="status status-pass" data-status="pass">PASS</span></td><td class="failing">-</td></tr>
 <tr><td class="repo-name">aaa-docs</td><td class="repo-type">docs</td><td><span class="status status-pass" data-status="pass">PASS</span></td><td class="failing">-</td></tr>
-<tr><td class="repo-name">aaa-tpl-docs</td><td class="repo-type">templates</td><td><span class="status status-pass" data-status="pass">PASS</span></td><td class="failing">-</td></tr>
+<tr><td class="repo-name">aaa-tpl-docs</td><td class="repo-type">templates</td><td><span class="status status-fail" data-status="fail">FAIL</span></td><td class="failing">workflow</td></tr>
 <tr><td class="repo-name">aaa-tpl-service</td><td class="repo-type">service</td><td><span class="status status-pass" data-status="pass">PASS</span></td><td class="failing">-</td></tr>
-<tr><td class="repo-name">aaa-tpl-frontend</td><td class="repo-type">frontend</td><td><span class="status status-pass" data-status="pass">PASS</span></td><td class="failing">-</td></tr>
+<tr><td class="repo-name">aaa-tpl-frontend</td><td class="repo-type">frontend</td><td><span class="status status-fail" data-status="fail">FAIL</span></td><td class="failing">readme</td></tr>
             </tbody>
           </table>
         </div>
