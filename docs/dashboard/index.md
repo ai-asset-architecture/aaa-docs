@@ -1,4 +1,4 @@
-# Governance Compliance Dashboard / 治理合規儀表板 (20260306_1024)
+# Governance Compliance Dashboard / 治理合規儀表板 (20260307_1011)
 
 - Compliance Rate / 合規率: 83%
 - Drift Rate / 漂移率: 0%
