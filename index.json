@@ -18,12 +18,14 @@
         },
         "architecture": "public/architecture/aaa-core-concepts.md",
         "guides": "public/guides/",
-        "inheritance_package_guide": "bootstrap/offering_definition_skeleton.md"
+        "inheritance_package_guide": "bootstrap/offering_definition_skeleton.md",
+        "guide_leverage_matrix": "bootstrap/operate_maintain_guide_leverage_matrix.md"
     },
     "human_entry_point": "public/README.md",
     "bootstrap_entry_points": {
         "workflow_law": "bootstrap/operate_maintain_guide.md",
         "workspace_architecture": "bootstrap/workspace_architecture.md",
-        "inheritance_package_definition": "bootstrap/offering_definition_skeleton.md"
+        "inheritance_package_definition": "bootstrap/offering_definition_skeleton.md",
+        "guide_leverage_matrix": "bootstrap/operate_maintain_guide_leverage_matrix.md"
     }
 }

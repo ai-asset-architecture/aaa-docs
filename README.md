@@ -16,6 +16,7 @@ Public specs are versioned through Git history and milestone releases.
 Read the bootstrap documents and the registry index for the latest specifications.
 
 - **Inheritance Package Skeleton**: [bootstrap/offering_definition_skeleton.md](bootstrap/offering_definition_skeleton.md) - Lite/Core/Full inheritance package baseline for remote client adoption.
+- **Guide Leverage Matrix**: [bootstrap/operate_maintain_guide_leverage_matrix.md](bootstrap/operate_maintain_guide_leverage_matrix.md) - Lamaco to AAA leverage triage for workflow-law strengthening.
 
 ## Contribution / Promotion Rules
 Changes require governance review and alignment with the AAA playbook.
@@ -26,6 +27,7 @@ This documentation is optimized for AI consumption. If you are an AI Agent, plea
 - **Core Workflow Law**: [operate_maintain_guide.md](bootstrap/operate_maintain_guide.md) - Mandatory behavioral rules and milestone lifecycle (4-Step v2.0.0).
 - **Architecture Guide**: [WORKSPACE_ARCHITECTURE.md](bootstrap/WORKSPACE_ARCHITECTURE.md) - Multi-repo structure and governance inheritance.
 - **Inheritance Package Guide**: [offering_definition_skeleton.md](bootstrap/offering_definition_skeleton.md) - Lite/Core/Full inheritance package layering skeleton.
+- **Guide Leverage Matrix**: [operate_maintain_guide_leverage_matrix.md](bootstrap/operate_maintain_guide_leverage_matrix.md) - Recommended and reduced-form leverage candidates for strengthening AAA workflow law.
 - **Registry Index**: [index.json](index.json) - Capability discovery and asset catalog.
 
 ### Protocol Support
