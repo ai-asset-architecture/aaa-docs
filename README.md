@@ -15,7 +15,7 @@ Public specs are versioned through Git history and milestone releases.
 ## How to Consume / Use
 Read the bootstrap documents and the registry index for the latest specifications.
 
-- **Offering Skeleton**: [bootstrap/offering_definition_skeleton.md](bootstrap/offering_definition_skeleton.md) - Customer-facing Lite/Core/Full adoption packaging baseline.
+- **Inheritance Package Skeleton**: [bootstrap/offering_definition_skeleton.md](bootstrap/offering_definition_skeleton.md) - Lite/Core/Full inheritance package baseline for remote client adoption.
 
 ## Contribution / Promotion Rules
 Changes require governance review and alignment with the AAA playbook.
@@ -25,7 +25,7 @@ This documentation is optimized for AI consumption. If you are an AI Agent, plea
 
 - **Core Workflow Law**: [operate_maintain_guide.md](bootstrap/operate_maintain_guide.md) - Mandatory behavioral rules and milestone lifecycle (4-Step v2.0.0).
 - **Architecture Guide**: [WORKSPACE_ARCHITECTURE.md](bootstrap/WORKSPACE_ARCHITECTURE.md) - Multi-repo structure and governance inheritance.
-- **Offering Guide**: [offering_definition_skeleton.md](bootstrap/offering_definition_skeleton.md) - Lite/Core/Full customer adoption layering skeleton.
+- **Inheritance Package Guide**: [offering_definition_skeleton.md](bootstrap/offering_definition_skeleton.md) - Lite/Core/Full inheritance package layering skeleton.
 - **Registry Index**: [index.json](index.json) - Capability discovery and asset catalog.
 
 ### Protocol Support

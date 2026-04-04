@@ -1,8 +1,8 @@
-# AAA Lite / Core / Full Offering Definition Skeleton
+# AAA Lite / Core / Full Inheritance Package Definition Skeleton
 
-> 目的：定義 AAA 對客戶的導入與承接分級骨架。  
+> 目的：定義 AAA 對 remote client 提供的可繼承 package 分級骨架。  
 > 適用對象：AAA 核心團隊、方案設計者、客戶導入顧問、AI agents。  
-> 文件性質：offering-layer skeleton，不是 version line、roadmap 或 import tier。  
+> 文件性質：inheritance-package-layer skeleton，不是 version line、roadmap 或 import tier。  
 > 生效前提：本文件可在 `v2.1.19` 之後進入正式化；`v2.1.20 ~ v2.1.22` 是否完成，不影響本 skeleton 的成立。
 
 ---
@@ -11,14 +11,14 @@
 
 ### 1.1 定義
 
-`AAA Lite / Core / Full` 是 **客戶導入與承接分級**。
+`AAA Lite / Core / Full` 是 **AAA 提供給 remote client 的 inheritance packages 分級**。
 
 它回答的問題是：
 
-- 客戶買哪一層能力包
-- 客戶要承接哪些治理責任
-- AAA 交付時要帶哪些 repo / workflow / governance / runtime 組件
-- 客戶專案會落在哪一種導入深度
+- AAA 提供哪一層可繼承能力包
+- remote client 要承接哪些治理責任
+- AAA inheritance package 應帶哪些 repo / workflow / governance / runtime 組件
+- remote client 會落在哪一種導入深度
 
 它**不回答**：
 
@@ -30,12 +30,12 @@
 
 - `v2.1.1 ~ v2.1.19`：建立 AAA 的 core absorption line
 - `v2.1.20 ~ v2.1.22`：conditional expansion
-- `Lite / Core / Full`：在核心能力面穩定後，用已完成能力面做切片的 offering layer
+- `Lite / Core / Full`：在核心能力面穩定後，用已完成能力面做切片的 inheritance package layer
 
 固定原則：
 
 - version line = build AAA
-- offering layer = package AAA
+- inheritance package layer = package AAA for remote client inheritance
 
 ---
 
@@ -55,14 +55,14 @@
 
 ### 2.3 Cumulative Rule
 
-offering 預設為 cumulative：
+inheritance package 預設為 cumulative：
 
 - `Core = Lite + governance/runtime base additions`
 - `Full = Core + operating-base additions`
 
 ### 2.4 Packaging Rule
 
-offering 以 **enablement bundle 為主、deliverable bundle 為輔**。
+inheritance package 以 **enablement bundle 為主、deliverable bundle 為輔**。
 
 也就是說，AAA 的主要價值不是丟給客戶一批模板，而是讓客戶團隊能承接：
 
@@ -87,7 +87,7 @@ offering 以 **enablement bundle 為主、deliverable bundle 為輔**。
 - 先求可啟動、可協作、可交付
 - 不要求完整 runtime / governance 閉環
 
-**客戶得到什麼**
+**remote client 繼承後得到什麼**
 
 - 可啟動的新專案骨架
 - 最小協作秩序
@@ -119,7 +119,7 @@ offering 以 **enablement bundle 為主、deliverable bundle 為輔**。
 - session persistence / recovery / normalized result 的完整 runtime plane
 - remote / external resource / operator product surface
 
-**客戶承接前提**
+**remote client 承接前提**
 
 - 願意遵守最小 PR discipline
 - 願意接受 template + playbook 的基本約束
@@ -127,7 +127,7 @@ offering 以 **enablement bundle 為主、deliverable bundle 為輔**。
 
 **一句話定位**
 
-讓客戶不要從零開始造輪子，但不要求立刻成為高度治理化團隊。
+讓 remote client 不要從零開始造輪子，但不要求立刻成為高度治理化團隊。
 
 ---
 
@@ -143,7 +143,7 @@ offering 以 **enablement bundle 為主、deliverable bundle 為輔**。
 - 願意導入 contract-first / mock-first / QA / evidence discipline
 - 希望 AI 協作不只是輔助，而是可治理
 
-**客戶得到什麼**
+**remote client 繼承後得到什麼**
 
 - 共享治理底盤
 - 一致的 repo / contract / schema / mock / QA / evidence 邏輯
@@ -179,7 +179,7 @@ offering 以 **enablement bundle 為主、deliverable bundle 為輔**。
 - heavy external resource integration
 - polished operator product surface
 
-**客戶承接前提**
+**remote client 承接前提**
 
 - 有基本 CI discipline
 - 接受 contract-first / mock-first
@@ -188,7 +188,7 @@ offering 以 **enablement bundle 為主、deliverable bundle 為輔**。
 
 **一句話定位**
 
-讓客戶不只是開專案，而是開始建立可治理、可複用、可複利的工程底盤。
+讓 remote client 不只是開專案，而是開始建立可治理、可複用、可複利的工程底盤。
 
 ---
 
@@ -203,7 +203,7 @@ offering 以 **enablement bundle 為主、deliverable bundle 為輔**。
 - 願意把多 repo、多 AI、多資產、多 workflow 全部納入共同底盤
 - 不是只買交付，而是買一個可長期運作的 project operating system
 
-**客戶得到什麼**
+**remote client 繼承後得到什麼**
 
 - 完整工程治理底盤
 - 長期可持續演進的 runtime / asset / workflow / evidence base
@@ -236,7 +236,7 @@ offering 以 **enablement bundle 為主、deliverable bundle 為輔**。
 - full SaaS collaboration suite
 - consumer-grade polished product surfaces
 
-**客戶承接前提**
+**remote client 承接前提**
 
 - 有穩定工程管理能力
 - 有 CI / review / QA / release discipline
@@ -245,7 +245,7 @@ offering 以 **enablement bundle 為主、deliverable bundle 為輔**。
 
 **一句話定位**
 
-讓客戶把 AAA 不是當 starter kit，而是當專案與團隊的長期操作底盤。
+讓 remote client 把 AAA 不是當 starter kit，而是當專案與團隊的長期操作底盤。
 
 ---
 
@@ -267,7 +267,7 @@ offering 以 **enablement bundle 為主、deliverable bundle 為輔**。
 
 ## 5. Client Prerequisites
 
-offering 定義不得只寫賣方提供什麼，也必須寫客戶需承接什麼。
+inheritance package 定義不得只寫 AAA 提供什麼，也必須寫 remote client 需承接什麼。
 
 至少要明寫以下前提：
 
@@ -278,7 +278,7 @@ offering 定義不得只寫賣方提供什麼，也必須寫客戶需承接什�
 - 是否要求 code review / QA / branch protection
 - 是否要求 asset feedback loop
 
-若客戶不具備承接能力，offering 必須允許降級，而不是硬塞較高級別方案。
+若 remote client 不具備承接能力，inheritance package 必須允許降級，而不是硬塞較高級別方案。
 
 ---
 
@@ -287,10 +287,10 @@ offering 定義不得只寫賣方提供什麼，也必須寫客戶需承接什�
 本 skeleton 明確不做：
 
 - 不把 `Lite / Core / Full` 變成 `v2.1.xx` roadmap 版本
-- 不把 offering 分級寫成 import capability law
+- 不把 inheritance package 分級寫成 import capability law
 - 不預先承諾 `Full` 一定包含 `v2.1.20 ~ v2.1.22`
 - 不把 `Full` 直接等同 managed service
-- 不把 customer offering 與內部 engineering maturity 混寫
+- 不把 remote client inheritance package 與內部 engineering maturity 混寫
 
 若後續要定義：
 
@@ -304,20 +304,20 @@ offering 定義不得只寫賣方提供什麼，也必須寫客戶需承接什�
 
 ## 7. Formalization Checklist
 
-下一版正式 offering 文件，至少應能直接回答：
+下一版正式 inheritance package 文件，至少應能直接回答：
 
 1. `Lite / Core / Full` 的定位差異是什麼？
 2. 每級的最小 repo 組合是什麼？
 3. 每級是否包含完整 `operate_maintain_workflow_v2`？
 4. 每級要求客戶承接哪些治理責任？
-5. offering layer 是否已與 version line 明確分離？
+5. inheritance package layer 是否已與 version line 明確分離？
 6. `Core` 是否可在 `v2.1.19` 完成後直接切出，而不依賴 `v2.1.20 ~ v2.1.22`？
 
 ---
 
 ## 8. Assumptions
 
-- offering layer 可在 **至少 `v2.1.19` 之後** 正式規劃，不必等待 `v2.1.22`
+- inheritance package layer 可在 **至少 `v2.1.19` 之後** 正式規劃，不必等待 `v2.1.22`
 - `v2.1.20 ~ v2.1.22` 仍屬 conditional expansion line
 - `Lite / Core / Full` 預設面向客戶導入方案，而非內部成熟度標籤
 - `Full` 目前仍是 capability package，不預設等同 managed adoption / managed operation
