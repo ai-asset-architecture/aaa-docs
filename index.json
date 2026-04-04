@@ -17,7 +17,13 @@
             "description": "Fallback: Use CLI if MCP not supported"
         },
         "architecture": "public/architecture/aaa-core-concepts.md",
-        "guides": "public/guides/"
+        "guides": "public/guides/",
+        "offering_guide": "bootstrap/offering_definition_skeleton.md"
     },
-    "human_entry_point": "public/README.md"
+    "human_entry_point": "public/README.md",
+    "bootstrap_entry_points": {
+        "workflow_law": "bootstrap/operate_maintain_guide.md",
+        "workspace_architecture": "bootstrap/workspace_architecture.md",
+        "offering_definition": "bootstrap/offering_definition_skeleton.md"
+    }
 }
